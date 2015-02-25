@@ -3,6 +3,9 @@
 
     <string name="app_name">Callout</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_favorites">Favorites</string>
+    <string name="action_personal_details">Personal Details</string>
+    <string name="action_master_club_list">Master Club List</string>
+    <string name="action_calendar">Calendar</string>
 
 </resources>
