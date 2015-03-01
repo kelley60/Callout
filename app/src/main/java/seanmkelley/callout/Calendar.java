@@ -1,6 +1,7 @@
 package seanmkelley.callout;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,8 @@ public class Calendar extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        //Intent intent = getIntent();
+        // TODO Do something with intent here
     }
 
 
