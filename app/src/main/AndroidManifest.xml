@@ -16,6 +16,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ClubMasterList"
+            android:label="@string/title_activity_club_master_list"
+            android:parentActivityName="ui.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.MyActivity" />
+        </activity>
+        <activity
+            android:name=".Favorites"
+            android:label="@string/title_activity_favorites"
+            android:parentActivityName="ui.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.MyActivity" />
+        </activity>
+        <activity
+            android:name=".Calendar"
+            android:label="@string/title_activity_calendar"
+            android:parentActivityName="ui.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.MyActivity" />
+        </activity>
+        <activity
+            android:name=".PersonalDetails"
+            android:label="@string/title_activity_personal_details"
+            android:parentActivityName="ui.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.MyActivity" />
+        </activity>
     </application>
 
 </manifest>

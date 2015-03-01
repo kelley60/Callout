@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.ArrayList;
+
 /**
  * Created by Austin on 2/26/2015.
  */
@@ -27,7 +29,7 @@ public class Club {
     {
         //remove badCat from the club's categories
         //to do: look into using removeAll(), as above figure out collections
-        remove(badCat);
+        cat.remove(badCat);
     }
     public void changeName(String newName)
     {
