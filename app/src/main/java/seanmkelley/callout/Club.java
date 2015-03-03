@@ -1,4 +1,4 @@
-package ui;
+package seanmkelley.callout;
 
 import java.util.ArrayList;
 
