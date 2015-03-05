@@ -1,34 +1,44 @@
 package seanmkelley.callout;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ClubMasterList extends Activity {
-    //These will be obtained from the database
-    private String[] club_names = {
-            "Club 1",
-            "Club 2",
-            "Club 3",
-            "Club 4",
-            "Club 5",
-            "Club 6",
-            "Club 7",
-            "Club 8",
-            "Club 9"
-    };
+    private List<String> clubNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // TODO Get String list of club names, descriptions, and photos from database
+        clubNames = new ArrayList<String>(20);
+        for (int i = 1; i <= 20; i++)
+            clubNames.add("Club " + i);
+
+        // Set to display club master list xml page
         setContentView(R.layout.activity_club_master_list);
 
-        ListView list = (ListView) findViewById(R.id.listView);
-        list.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, R.id.text, club_names));
+        // Setup the list view to display the club names
+        ListView lv = (ListView) findViewById(R.id.listView);
+        lv.setAdapter(new ClubArrayAdapter(this, R.layout.list_item, clubNames));
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3) {
+                Intent i = new Intent("ClubPage");
+                i.putExtra("club_id", getItemIdAtIndex(position));
+                i.putExtra("club_name", getClubName(position));
+                startActivity(i);
+            }
+        });
     }
 
 
@@ -52,5 +62,16 @@ public class ClubMasterList extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public String getClubName(int index) {
+        return clubNames.get(index);
+    }
+
+    public int getItemIdAtIndex (int position) {
+        // Eventually, when we are just taking parts of the total group of clubs,
+        // this will need to actually return the clubs id, but just returns the
+        // position for now.
+        return position;
     }
 }

@@ -13,5 +13,10 @@
     <string name="title_activity_calendar">Calendar</string>
     <string name="title_activity_personal_details">Personal Details</string>
     <string name="title_activity_club_page">Club Page</string>
+    <string name="welcome_message">Welcome to Callout!</string>
+    <string name="club_organization_radio_button">Organization</string>
+    <string name="go">Go!</string>
+    <string name="student">Student</string>
+    <string name="club_organization">Club/Organization</string>
 
 </resources>
