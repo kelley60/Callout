@@ -3,6 +3,7 @@
     package="seanmkelley.callout" >
 
     <application
+        android:uiOptions="splitActionBarWhenNarrow"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
