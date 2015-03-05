@@ -26,6 +26,7 @@
 
             <intent-filter>
                 <action android:name="ClubMasterList" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -39,6 +40,7 @@
 
             <intent-filter>
                 <action android:name="Favorites" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -52,6 +54,7 @@
 
             <intent-filter>
                 <action android:name="Calendar" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -65,8 +68,17 @@
 
             <intent-filter>
                 <action android:name="PersonalDetails" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ClubPage"
+            android:label="@string/title_activity_club_page"
+            android:parentActivityName="ui.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.MyActivity" />
         </activity>
     </application>
 
