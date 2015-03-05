@@ -25,9 +25,9 @@
     android:id="@+id/loginClubButtonId"
     android:checked="false"
     android:textSize="25sp"
-    android:layout_above="@+id/loginButtonId"
-    android:layout_centerHorizontal="true"
-    android:layout_marginBottom="87dp"/>
+        android:layout_marginBottom="85dp"
+        android:layout_above="@+id/loginButtonId"
+        android:layout_centerHorizontal="true" />
 
 
 

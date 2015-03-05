@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#ffcfb53b">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Club Name"
+        android:id="@+id/clubName"
+        android:layout_marginTop="33dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="500px"
+        android:layout_height="450px"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Club Bio"
+        android:id="@+id/clubBio"
+        android:layout_above="@+id/eventTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="44dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Upcoming Events:"
+        android:id="@+id/eventTitle"
+        android:layout_marginBottom="158dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="300px"
+        android:layout_height="100px"
+        android:background="#CC5500"
+        android:text="Join"
+        android:id="@+id/joinButton"
+        android:layout_marginRight="30dp"
+        android:layout_alignTop="@+id/clubName"
+        android:layout_alignParentRight="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="280px"
+        android:id="@+id/eventList"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>

@@ -11,7 +11,7 @@ public class ClubPage extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_club_page);
+        setContentView(R.layout.activity_student_club_view);
     }
 
 
