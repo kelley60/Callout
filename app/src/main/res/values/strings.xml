@@ -18,5 +18,7 @@
     <string name="go">Go!</string>
     <string name="student">Student</string>
     <string name="club_organization">Club/Organization</string>
+    <string name="title_activity_club">ClubActivity</string>
+    <string name="title_activity_student">StudentActivity</string>
 
 </resources>

@@ -3,13 +3,13 @@ package ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
-
+import android.widget.RadioGroup;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.CompoundButton;
+import android.view.View.OnClickListener;
 
 import seanmkelley.callout.*;
 
@@ -20,23 +20,61 @@ public class MyActivity extends Activity {
     private Button mGoButton;
     private RadioButton mStudentButton;
     private RadioButton mClubButton;
+    private RadioGroup mRadioGroup;
     //loginStudentButtonId
     private boolean isStudent;
     private boolean isClub;
+    private boolean checked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mStudentButton = (RadioButton)findViewById(R.id.loginStudentButtonId);
-        mClubButton = (RadioButton)findViewById(R.id.loginClubButtonId);
-        mGoButton = (Button)findViewById(R.id.loginButtonId);
+        mStudentButton = (RadioButton) findViewById(R.id.loginStudentButtonId);
+        mClubButton = (RadioButton) findViewById(R.id.loginClubButtonId);
+        mGoButton = (Button) findViewById(R.id.loginButtonId);
+        mRadioGroup = (RadioGroup) findViewById(R.id.radioGroupId);
 
-        if (mStudentButton.isChecked())
-                isStudent = true;
-        if (mClubButton.isChecked())
-                isClub = true;
+        OnClickListener radioClickListener = new OnClickListener()
+        {
+
+            public void onClick(View v)
+            {       //The first condition check if we have clicked on an already selected radioButton
+                if (v.getId() == mRadioGroup.getCheckedRadioButtonId() && checked)
+                {
+                    mRadioGroup.clearCheck();
+                }
+                else
+                {
+                    checked = true;
+                    if (v.getId() == R.id.loginClubButtonId){
+                        isClub = true;
+                        isStudent = false;
+                    }
+                    else {
+                        isClub = false;
+                        isStudent = true;
+                    }
+                }
+            }
+        };
+
+        OnCheckedChangeListener radioCheckChangeListener = new OnCheckedChangeListener()
+        {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                checked = false;
+            }
+        };
+
+        mClubButton.setOnCheckedChangeListener(radioCheckChangeListener);
+        mStudentButton.setOnCheckedChangeListener(radioCheckChangeListener);
+
+        mClubButton.setOnClickListener(radioClickListener);
+        mStudentButton.setOnClickListener(radioClickListener);
 
         mGoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,52 +95,6 @@ public class MyActivity extends Activity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.student_menu, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
-        Intent i = null;
-
-        switch (item.getItemId()) {
-            case R.id.action_master_club_list:
-                i = new Intent("ClubMasterList");
-                break;
-
-            case R.id.action_favorites:
-                i = new Intent("Favorites");
-                break;
-
-            case R.id.action_calendar:
-                i = new Intent("Calendar");
-                break;
-
-            case R.id.action_personal_details:
-                i = new Intent("PersonalDetails");
-                break;
-
-            case R.id.action_club_details:
-                i = new Intent("ClubDetails");
-                break;
-
-            case R.id.action_club_members:
-                i = new Intent("Club_Members");
-                break;
-
-            default:
-                break;
-        }
-
-        startActivity(i);
-
-        return false;
-    }
 }

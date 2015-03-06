@@ -3,7 +3,6 @@
     package="seanmkelley.callout" >
 
     <application
-        android:uiOptions="splitActionBarWhenNarrow"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -13,6 +12,7 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,6 +26,7 @@
 
             <intent-filter>
                 <action android:name="ClubMasterList" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -39,6 +40,7 @@
 
             <intent-filter>
                 <action android:name="Favorites" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -52,6 +54,7 @@
 
             <intent-filter>
                 <action android:name="Calendar" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -65,6 +68,7 @@
 
             <intent-filter>
                 <action android:name="PersonalDetails" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -78,8 +82,33 @@
 
             <intent-filter>
                 <action android:name="ClubPage" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="ui.ClubActivity.ClubActivity"
+            android:label="@string/title_activity_club"
+            android:parentActivityName="ui.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.MyActivity" />
+        </activity>
+        <activity
+            android:name="ui.ClubActivity"
+            android:label="@string/title_activity_club"
+            android:parentActivityName="ui.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.MyActivity" />
+        </activity>
+        <activity
+            android:name="ui.StudentActivity"
+            android:label="@string/title_activity_student"
+            android:parentActivityName="ui.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.MyActivity" />
         </activity>
     </application>
 

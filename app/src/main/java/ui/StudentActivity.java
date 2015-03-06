@@ -19,7 +19,45 @@ public class StudentActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student);
-
+        setContentView(R.layout.student_home);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+
+        Intent i = null;
+
+        switch (item.getItemId()) {
+            case R.id.action_master_club_list:
+                i = new Intent("ClubMasterList");
+                break;
+
+            case R.id.action_favorites:
+                i = new Intent("Favorites");
+                break;
+
+            case R.id.action_calendar:
+                i = new Intent("Calendar");
+                break;
+
+            case R.id.action_personal_details:
+                i = new Intent("PersonalDetails");
+                break;
+
+            case R.id.action_club_details:
+                i = new Intent("ClubDetails");
+                break;
+
+            default:
+                break;
+        }
+
+        startActivity(i);
+
+        return false;
+    }
+
 }

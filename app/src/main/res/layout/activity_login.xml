@@ -18,14 +18,24 @@
         android:textIsSelectable="false"
         android:textSize="36sp"/>
 
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/go"
+        android:id="@+id/loginButtonId"
+        android:background="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="47dp"/>
 
     <RadioGroup
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:paddingLeft="@dimen/activity_vertical_margin"
-        android:id="@+id/radgroup">
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/radioGroupId">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -43,15 +53,4 @@
             android:checked="false"
             android:textSize="25sp"/>
     </RadioGroup>
-
-    <Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/go"
-    android:id="@+id/loginButtonId"
-    android:background="@android:color/white"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginBottom="47dp"/>
 </RelativeLayout>
