@@ -74,6 +74,7 @@ public class Club {
     {
         try{
             //this is gonna take some tinkering
+            //http://www.tutorialspoint.com/javaexamples/java_jdbc.htm seems to be a decent reference
             Connection con = DriverManager.getConnection("jdbc:mydb.ics.purdue.edu","awirth","alaina007");//not sure on this format
             //this password is completely different from my mypurdue login if anyone was wondering
             //we may not want the password sitting right here in the code...

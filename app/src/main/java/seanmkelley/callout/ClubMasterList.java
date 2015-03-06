@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.sql.*;
 
 public class ClubMasterList extends Activity {
     private List<String> clubNames;
@@ -18,9 +18,37 @@ public class ClubMasterList extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //the following was in some example code I found online
+        //not quite sure what it does but it's probably important, seems to be error trapping
+        /* try {
+         Class.forName("org.apache.derby.jdbc.ClientDriver"); //driver? not sure what's supposed to go here
+        }
+        catch(ClassNotFoundException e) {
+         System.out.println("Class not found "+ e);
+         }*/
         // TODO Get String list of club names, descriptions, and photos from database
         clubNames = new ArrayList<String>(20);
+        //commenting all of my revisions for now so I don't break anything right before the demo
+        //clubBios = new ArrayList<String>(20);
+        /*try {
+            Connection con = DriverManager.getConnection("jdbc:mydb.ics.purdue.edu","awirth","alaina007");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM clubs");
+            //System.out.println("id  Name    Bio");
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("Name");
+                String bio = rs.getString("Bio");
+                //System.out.println(id+"   "+Name+"    "+Bio);
+                clubNames.add("Name");
+                clubBios.add("Bio");
+            }
+        }
+        catch(SQLException e){
+            System.out.println("SQL exception occurred" + e);
+        }*/
+
         for (int i = 1; i <= 20; i++)
             clubNames.add("Club " + i);
 
