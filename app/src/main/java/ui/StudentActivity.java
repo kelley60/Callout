@@ -14,7 +14,7 @@ import seanmkelley.callout.*;
 /**
  * Created by Sean on 3/5/2015.
  */
-public class StudentActivity {
+public class StudentActivity extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -42,19 +42,14 @@ public class MyActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent userIntent;
-                /*
 
-        Intent intent = new Intent(this, StoryActivity.class);
-        intent.putExtra(getString(R.string.key_name), name);
-        startActivity(intent);
-        */
                 if (isStudent){
-                    userIntent = new Intent(this,StudentActivity.class);
+                    userIntent = new Intent(MyActivity.this,StudentActivity.class);
                     startActivity(userIntent);
                 }
 
                 if (isClub){
-                    userIntent = new Intent(this,ClubActivity.class);
+                    userIntent = new Intent(MyActivity.this,ClubActivity.class);
                     startActivity(userIntent);
                 }
             }
