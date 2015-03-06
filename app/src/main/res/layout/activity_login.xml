@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Welcome to Callout!"
+        android:text="@string/welcome_message"
         android:id="@+id/loginTextId"
         android:layout_marginTop="103dp"
         android:textColor="@android:color/white"
@@ -18,23 +18,10 @@
         android:textIsSelectable="false"
         android:textSize="36sp"/>
 
-    <RadioButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Club/Organization"
-    android:id="@+id/loginClubButtonId"
-    android:checked="false"
-    android:textSize="25sp"
-        android:layout_marginBottom="85dp"
-        android:layout_above="@+id/loginButtonId"
-        android:layout_centerHorizontal="true" />
-
-
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go!"
+        android:text="@string/go"
         android:id="@+id/loginButtonId"
         android:background="@android:color/white"
         android:layout_alignParentBottom="true"
@@ -42,14 +29,26 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="47dp"/>
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Student"
-        android:id="@+id/loginStudentButtonId"
-        android:checked="false"
-        android:textSize="25sp"
-        android:layout_above="@+id/loginClubButtonId"
-        android:layout_alignLeft="@+id/loginClubButtonId"
-        android:layout_alignStart="@+id/loginClubButtonId"/>
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/activity_vertical_margin">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/club_organization"
+            android:id="@+id/loginClubButtonId"
+            android:checked="false"
+            android:textSize="25sp"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/student"
+            android:id="@+id/loginStudentButtonId"
+            android:checked="false"
+            android:textSize="25sp"/>
+    </RadioGroup>
 </RelativeLayout>
