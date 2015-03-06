@@ -1,5 +1,9 @@
 package seanmkelley.callout;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +21,20 @@ public class Club {
         members = m;
         cat = categories;
         bio = b;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+    public String getbio()
+    {
+        return bio;
+
+    }
+    public ArrayList getCat()
+    {
+        return cat;
     }
     public void addCat(String newCat)
     {
@@ -51,5 +69,20 @@ public class Club {
         //edit he bio of the club. Maybe find a way to open a textbox to edit the previous bio
         //instead of just assigning a new string to it
         bio = newBio;
+    }
+    public void addMeToDatabase()
+    {
+        try{
+            //this is gonna take some tinkering
+            Connection con = DriverManager.getConnection("jdbc:mydb.ics.purdue.edu","awirth","alaina007");//not sure on this format
+            //this password is completely different from my mypurdue login if anyone was wondering
+            //we may not want the password sitting right here in the code...
+
+            String query1 = "insert into emp values(2,'The Moonwalking club','Dance yo.')";
+            stmt.execute(query1);}
+
+        catch(SQLException e){
+            System.out.println("SQL exception occured" + e);
+    }
     }
 }
