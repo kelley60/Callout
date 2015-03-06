@@ -10,4 +10,13 @@
     android:background="#ffcfb53b">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Student Activity"
+        android:id="@+id/activityStudentId"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="124dp"/>
 </RelativeLayout>
