@@ -44,14 +44,14 @@ public class MyActivity extends Activity {
                 Intent userIntent;
 
                 if (isStudent){
-                    userIntent = new Intent(MyActivity.this,StudentActivity.class);
-                    startActivity(userIntent);
-                }
+                userIntent = new Intent(MyActivity.this,StudentActivity.class);
+                startActivity(userIntent);
+            }
 
-                if (isClub){
-                    userIntent = new Intent(MyActivity.this,ClubActivity.class);
-                    startActivity(userIntent);
-                }
+            if (isClub){
+                userIntent = new Intent(MyActivity.this,ClubActivity.class);
+                startActivity(userIntent);
+            }
             }
         });
     }
