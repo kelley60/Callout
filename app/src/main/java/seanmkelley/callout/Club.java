@@ -83,7 +83,7 @@ public class Club {
             stmt.execute(query1);}
 
         catch(SQLException e){
-            System.out.println("SQL exception occured" + e);
+            System.out.println("SQL exception occurred" + e);
     }
     }
 }

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
 public class ClubPage extends Activity {
@@ -12,6 +14,15 @@ public class ClubPage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_club_view);
+
+        String club_id = (String)getIntent().getExtras().get("club_id");
+        String club_name = (String)getIntent().getExtras().get("club_name");
+
+        TextView t = (TextView) findViewById(R.id.clubName);
+        t.setText(club_name);
+
+        t = (TextView) findViewById(R.id.clubBio);
+        //t.setText(currentClub.getBio());
     }
 
 
