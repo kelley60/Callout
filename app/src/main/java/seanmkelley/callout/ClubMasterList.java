@@ -20,17 +20,17 @@ public class ClubMasterList extends Activity {
         super.onCreate(savedInstanceState);
         //the following was in some example code I found online
         //not quite sure what it does but it's probably important, seems to be error trapping
-        /* try {
+         /*try {
          Class.forName("org.apache.derby.jdbc.ClientDriver"); //driver? not sure what's supposed to go here
         }
         catch(ClassNotFoundException e) {
          System.out.println("Class not found "+ e);
-         }*/
+         }
         // TODO Get String list of club names, descriptions, and photos from database
         clubNames = new ArrayList<String>(20);
         //commenting all of my revisions for now so I don't break anything right before the demo
         //clubBios = new ArrayList<String>(20);
-        /*try {
+        try {
             Connection con = DriverManager.getConnection("jdbc:mydb.ics.purdue.edu","awirth","alaina007");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM clubs");
@@ -42,7 +42,7 @@ public class ClubMasterList extends Activity {
                 String bio = rs.getString("Bio");
                 //System.out.println(id+"   "+Name+"    "+Bio);
                 clubNames.add("Name");
-                clubBios.add("Bio");
+                //clubBios.add("Bio");
             }
         }
         catch(SQLException e){

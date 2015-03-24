@@ -70,6 +70,7 @@ public class Club {
         //instead of just assigning a new string to it
         bio = newBio;
     }
+
     public void addMeToDatabase()
     {
         try{
@@ -80,7 +81,8 @@ public class Club {
             //we may not want the password sitting right here in the code...
 
             String query1 = "insert into emp values(2,'The Moonwalking club','Dance yo.')";
-            stmt.execute(query1);}
+            //stmt.execute(query1);
+            }
 
         catch(SQLException e){
             System.out.println("SQL exception occurred" + e);
