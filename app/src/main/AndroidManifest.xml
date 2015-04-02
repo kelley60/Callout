@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Calendar"
+            android:name="calendar.CalendarActivity"
             android:label="@string/title_activity_calendar"
             android:parentActivityName="ui.MyActivity" >
             <meta-data
@@ -85,14 +85,6 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="ui.ClubActivity.ClubActivity"
-            android:label="@string/title_activity_club"
-            android:parentActivityName="ui.MyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ui.MyActivity" />
         </activity>
         <activity
             android:name="ui.ClubActivity"

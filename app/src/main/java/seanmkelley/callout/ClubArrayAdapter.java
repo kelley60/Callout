@@ -27,7 +27,11 @@ public class ClubArrayAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         // Setup inflater and view
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = null == convertView ? inflater.inflate(R.layout.list_item, null) : convertView;
+        View view;
+        if (convertView == null)
+            view = inflater.inflate(R.layout.list_item, null);
+        else
+            view = convertView;
 
         // Setup text
         TextView text = (TextView) view.findViewById(R.id.text);

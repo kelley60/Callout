@@ -49,6 +49,7 @@ public class ClubMasterList extends Activity {
             System.out.println("SQL exception occurred" + e);
         }*/
 
+        clubNames = new ArrayList<String>(20);
         for (int i = 1; i <= 20; i++)
             clubNames.add("Club " + i);
 
