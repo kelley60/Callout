@@ -50,6 +50,8 @@ public class DbMailer {
     {
         url = s;
         con = c;
+
+
     }
     private class JsonReadTask extends AsyncTask<String, Void, String> {
         @Override
@@ -95,6 +97,7 @@ public class DbMailer {
     }
 
     public List<Club> ClubList() {
+        accessDatabase();
         //List<Map<String, String>> DataList = new ArrayList<Map<String, String>>();
         List<Club> ClubList = new ArrayList<Club>();
         try {
