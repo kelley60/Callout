@@ -15,10 +15,10 @@ public class Club {
     public int members; //maybe not needed
     public ArrayList cat; //categories
     public String bio; //bio/description of the club
-    public Club(String n, int m, ArrayList categories, String b)
+    public Club(String n, String b, ArrayList categories)
     {
         name = n;
-        members = m;
+        //members = m;
         cat = categories;
         bio = b;
     }
@@ -27,7 +27,7 @@ public class Club {
     {
         return name;
     }
-    public String getbio()
+    public String getBio()
     {
         return bio;
 
@@ -54,7 +54,7 @@ public class Club {
         //change the club's name
         name = newName;
     }
-    public void changeMembers(int numMembers)
+    /*public void changeMembers(int numMembers)
     {
         //change number of members. maybe not needed
         members = numMembers;
@@ -63,7 +63,7 @@ public class Club {
     {
         //add just one member. maybe not needed
         members++;
-    }
+    }*/
     public void editBio(String newBio)
     {
         //edit he bio of the club. Maybe find a way to open a textbox to edit the previous bio
