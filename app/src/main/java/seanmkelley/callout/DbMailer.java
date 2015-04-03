@@ -20,14 +20,27 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Austin on 3/24/2015.
  */
+
+//create the DbMailer with DbMailer db = new DbMailer(<string with the url you want to access here>, getApplicationContext());
+    //List<Club> allClubs = db.ClubList();
+    //"http://web.ics.purdue.edu/~awirth/db_clubs.php"
+    //"http://web.ics.purdue.edu/~awirth/db_login.php"
+    //"http://web.ics.purdue.edu/~awirth/db_cal.php"
+
 public class DbMailer {
 
     private String jsonResult;
@@ -80,6 +93,32 @@ public class DbMailer {
         JsonReadTask task = new JsonReadTask();
         task.execute(new String[] { url });
     }
+
+    public List<Club> ClubList() {
+        //List<Map<String, String>> DataList = new ArrayList<Map<String, String>>();
+        List<Club> ClubList = new ArrayList<Club>();
+        try {
+            JSONObject jsonResponse = new JSONObject(jsonResult);
+            JSONArray jsonMainNode = jsonResponse.optJSONArray("clubs");
+
+            for (int i = 0; i < jsonMainNode.length(); i++) {
+                JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
+                String name = jsonChildNode.optString("name");
+                String bio = jsonChildNode.optString("bio");
+                //String outPut = name + "-" + bio;
+                //DataList.add(createEmployee("employees", outPut));
+                Club thisItem = new Club(name, bio, null);
+                ClubList.add(thisItem);
+            }
+        } catch (JSONException e) {
+            Toast.makeText(con, "Error" + e.toString(),
+                    Toast.LENGTH_SHORT).show();
+        }
+        return ClubList;
+    }
+
+
+
 
 }
     //FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(getContext());

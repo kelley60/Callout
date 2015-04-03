@@ -49,9 +49,12 @@ public class ClubMasterList extends Activity {
             System.out.println("SQL exception occurred" + e);
         }*/
 
-        clubNames = new ArrayList<String>(20);
+
+        DbMailer db = new DbMailer("http://web.ics.purdue.edu/~awirth/db_clubs.php", getApplicationContext());
+        List<Club> clubNames = db.ClubList();
+        /*clubNames = new ArrayList<String>(20);
         for (int i = 1; i <= 20; i++)
-            clubNames.add("Club " + i);
+            clubNames.add("Club " + i);*/
 
         // Set to display club master list xml page
         setContentView(R.layout.activity_club_master_list);

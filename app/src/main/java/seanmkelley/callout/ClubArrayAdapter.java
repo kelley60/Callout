@@ -14,10 +14,10 @@ import java.util.List;
  * Adapter to be used in the club list
  */
 public class ClubArrayAdapter extends ArrayAdapter {
-    private List<String> clubNames;
+    private List<Club> clubNames;
     private Context context;
 
-    public ClubArrayAdapter(Context context, int resource, List<String> clubNames) {
+    public ClubArrayAdapter(Context context, int resource, List<Club> clubNames) {
         super(context, resource, clubNames);
         this.clubNames = clubNames;
         this.context = context;
@@ -35,7 +35,7 @@ public class ClubArrayAdapter extends ArrayAdapter {
 
         // Setup text
         TextView text = (TextView) view.findViewById(R.id.text);
-        text.setText(clubNames.get(position));
+        text.setText(clubNames.get(position).getName());
 
         return view;
     }
