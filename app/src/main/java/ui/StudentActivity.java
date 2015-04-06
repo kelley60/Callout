@@ -44,7 +44,7 @@ public class StudentActivity extends Activity{
                 break;
 
             case R.id.action_calendar:
-                i = new Intent("Calendar");
+                i = new Intent("calendar");
                 break;
 
             case R.id.action_personal_details:
@@ -55,7 +55,9 @@ public class StudentActivity extends Activity{
                 i = new Intent("ClubDetails");
                 break;
 
+            //when the up button is pushed
             default:
+                i = new Intent(StudentActivity.this,MyActivity.class);
                 break;
         }
 

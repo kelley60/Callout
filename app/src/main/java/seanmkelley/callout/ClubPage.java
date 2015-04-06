@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 
@@ -13,7 +12,7 @@ public class ClubPage extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_club_view);
+        setContentView(R.layout.student_club_view);
 
         String club_id = (String)getIntent().getExtras().get("club_id");
         String club_name = (String)getIntent().getExtras().get("club_name");

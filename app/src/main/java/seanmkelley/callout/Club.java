@@ -73,6 +73,7 @@ public class Club {
 
     public void addMeToDatabase()
     {
+        /*
         try{
             //this is gonna take some tinkering
             //http://www.tutorialspoint.com/javaexamples/java_jdbc.htm seems to be a decent reference
@@ -87,5 +88,6 @@ public class Club {
         catch(SQLException e){
             System.out.println("SQL exception occurred" + e);
     }
+    */
     }
 }

@@ -11,7 +11,7 @@ public class PersonalDetails extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal_details);
+        setContentView(R.layout.student_personal_details);
     }
 
 
@@ -19,7 +19,7 @@ public class PersonalDetails extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_personal_details, menu);
-        return true;
+        return false;
     }
 
     @Override

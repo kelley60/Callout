@@ -14,7 +14,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/masterClubListView"
         android:layout_below="@+id/action_master_club_list"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

@@ -20,10 +20,8 @@
         <activity
             android:name=".ClubMasterList"
             android:label="@string/title_activity_club_master_list"
-            android:parentActivityName="ui.MyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ui.MyActivity" />
+            android:parentActivityName="ui.StudentActivity" >
+
 
             <intent-filter>
                 <action android:name="ClubMasterList" />
@@ -34,10 +32,7 @@
         <activity
             android:name=".Favorites"
             android:label="@string/title_activity_favorites"
-            android:parentActivityName="ui.MyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ui.MyActivity" />
+            android:parentActivityName="ui.StudentActivity" >
 
             <intent-filter>
                 <action android:name="Favorites" />
@@ -48,10 +43,8 @@
         <activity
             android:name="calendar.CalendarActivity"
             android:label="@string/title_activity_calendar"
-            android:parentActivityName="ui.MyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ui.MyActivity" />
+            android:parentActivityName="ui.StudentActivity" >
+
 
             <intent-filter>
                 <action android:name="Calendar" />
@@ -62,10 +55,8 @@
         <activity
             android:name=".PersonalDetails"
             android:label="@string/title_activity_personal_details"
-            android:parentActivityName="ui.MyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ui.MyActivity" />
+            android:parentActivityName="ui.StudentActivity" >
+
 
             <intent-filter>
                 <action android:name="PersonalDetails" />
@@ -76,10 +67,8 @@
         <activity
             android:name=".ClubPage"
             android:label="@string/title_activity_club_page"
-            android:parentActivityName="ui.MyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ui.MyActivity" />
+            android:parentActivityName="ui.StudentActivity" >
+
 
             <intent-filter>
                 <action android:name="ClubPage" />
@@ -91,17 +80,28 @@
             android:name="ui.ClubActivity"
             android:label="@string/title_activity_club"
             android:parentActivityName="ui.MyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ui.MyActivity" />
+
+            <intent-filter>
+                <action android:name="ClubActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name="ui.StudentActivity"
             android:label="@string/title_activity_student"
             android:parentActivityName="ui.MyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ui.MyActivity" />
+            <intent-filter>
+                <action android:name="StudentActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".StudentCalender"
+            android:label="@string/title_activity_student_calender"
+            android:parentActivityName="ui.StudentActivity" >
+
         </activity>
     </application>
 

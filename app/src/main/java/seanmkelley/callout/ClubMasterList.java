@@ -8,9 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.sql.*;
 
 public class ClubMasterList extends Activity {
     private List<String> clubNames;
@@ -60,7 +59,7 @@ public class ClubMasterList extends Activity {
         setContentView(R.layout.activity_club_master_list);
 
         // Setup the list view to display the club names
-        ListView lv = (ListView) findViewById(R.id.listView);
+        ListView lv = (ListView) findViewById(R.id.masterClubListView);
         lv.setAdapter(new ClubArrayAdapter(this, R.layout.list_item, clubNames));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
