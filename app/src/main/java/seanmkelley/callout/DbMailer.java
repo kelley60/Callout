@@ -7,6 +7,12 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.Response;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -42,18 +48,22 @@ import java.util.Map;
     //"http://web.ics.purdue.edu/~awirth/db_login.php"
     //"http://web.ics.purdue.edu/~awirth/db_cal.php"
 
+
+
 public class DbMailer {
+    public static final String TAG = DbMailer.class.getSimpleName();
 
     private String jsonResult;
     private String url;//;"http://web.ics.purdue.edu/~awirth/db_clubs.php";
     private Context con;
-    public DbMailer(String s, Context c)
-    {
+
+    public DbMailer(String s, Context c) {
         url = s;
         con = c;
 
 
     }
+
     private class JsonReadTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
@@ -62,9 +72,7 @@ public class DbMailer {
             try {
                 HttpResponse response = httpclient.execute(httppost);
                 jsonResult = inputStreamToString(response.getEntity().getContent()).toString();
-            }
-
-            catch (ClientProtocolException e) {
+            } catch (ClientProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -81,9 +89,7 @@ public class DbMailer {
                 while ((rLine = rd.readLine()) != null) {
                     answer.append(rLine);
                 }
-            }
-
-            catch (IOException e) {
+            } catch (IOException e) {
                 // e.printStackTrace();
                 Toast.makeText(con, "Error..." + e.toString(), Toast.LENGTH_LONG).show();
             }
@@ -91,23 +97,27 @@ public class DbMailer {
         }
     }
 
-    public void accessDatabase()
-    {
+    public void accessDatabase() {
         JsonReadTask task = new JsonReadTask();
-        task.execute(new String[] { url });
+        task.execute(new String[]{url});
     }
 
+
+    /*
     public List<Club> ClubList() {
 
         accessDatabase();
         //List<Map<String, String>> DataList = new ArrayList<Map<String, String>>();
         List<Club> ClubList = new ArrayList<Club>();
+        Toast.makeText(con, jsonResult, Toast.LENGTH_LONG).show();
+        /*
         try {
-            JSONObject jsonResponse = new JSONObject(jsonResult);
+            Toast.makeText(con, jsonResult, Toast.LENGTH_LONG).show();
+            //JSONObject jsonResponse = new JSONObject(jsonResult);
             //JSONArray jsonMainNode = jsonResponse.optJSONArray("clubs");
             //int length = jsonMainNode.length();
             //Toast.makeText(con, "number of clubs is " + length, Toast.LENGTH_LONG).show();
-            /*
+
             for (int i = 0; i < jsonMainNode.length(); i++) {
                 JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
                 String name = jsonChildNode.optString("name");
@@ -120,68 +130,81 @@ public class DbMailer {
                 Club thisItem = new Club(name, bio, null);
                 ClubList.add(thisItem);
             }
-            */
+
         } catch (JSONException e) {
             Toast.makeText(con, "Error" + e.toString(),
                     Toast.LENGTH_SHORT).show();
         }
+
         return ClubList;
 
     }
 
-    /*
+    */
+
+
     public List<Club> ClubList() {
-    OkHttpClient client = new OkHttpClient();
-    Request request = new Request.Builder()
-            .url(forecastUrl)
-            .build();
 
-    Call call = client.newCall(request);
-    call.enqueue(new Callback() {
-        @Override
-        public void onFailure(Request request, IOException e) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    toggleRefresh();
+        final List<Club> ClubList = new ArrayList<Club>();
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                Toast.makeText(con, "failure", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+
+                try {
+                    String jsonData = response.body().string();
+
+
+                    Log.v(TAG, jsonData);
+                    if (response.isSuccessful()) {
+                        //access internet
+
+                        getData(jsonData, ClubList);
+
+
+                    } else {
+                        Toast.makeText(con, "failure", Toast.LENGTH_LONG).show();
+                        //alertUserAboutError();
+                    }
+                } catch (IOException e) {
+                    Log.e(TAG, "Exception caught : ", e);
                 }
-            });
-            alertUserAboutError();
+                catch (JSONException e){
+                    Log.e(TAG, "Exception caught : ", e);
+                }
+            }
+        });
+
+
+        return ClubList;
+
+    }
+
+    private void getData(String jsonData, List<Club> ClubList) throws JSONException {
+        JSONObject data = new JSONObject(jsonData);
+        JSONArray array = data.getJSONArray("clubs");
+
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject jsonChildNode = array.getJSONObject(i);
+
+            String name = jsonChildNode.optString("Name");
+            String bio = jsonChildNode.optString("Bio");
+            Log.v(TAG, name + " " + bio);
+            Club thisItem = new Club(name, bio, null);
+            ClubList.add(thisItem);
         }
 
-        @Override
-        public void onResponse(Response response) throws IOException {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    toggleRefresh();
-                }
-            });
-            try {
-                String jsonData = response.body().string();
-                Log.v(TAG, jsonData);
-                if (response.isSuccessful()) {
-                    mCurrentWeather = getCurrentDetails(jsonData);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateDisplay();
-                        }
-                    });
-
-                } else {
-                    alertUserAboutError();
-                }
-            } catch (IOException e) {
-                Log.e(TAG, "Exception caught : ", e);
-            }
-            catch (JSONException e){
-                Log.e(TAG, "Exception caught : ", e);
-            }
-        }
-    });
-
-*/
-
+    }
 
 }

@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClubMasterList extends Activity {
@@ -54,9 +55,13 @@ public class ClubMasterList extends Activity {
         DbMailer db = new DbMailer("http://web.ics.purdue.edu/~awirth/db_clubs.php", getApplicationContext());
 
         List<Club> clubNames = db.ClubList();
-        /*clubNames = new ArrayList<String>(20);
-        for (int i = 1; i <= 20; i++)
-            clubNames.add("Club " + i);*/
+        clubNames = new ArrayList<Club>();
+        Toast.makeText(this, clubNames.size()+" is club name size",Toast.LENGTH_LONG);
+        //Toast.makeText(this, clubNames.get(0).getName(), Toast.LENGTH_LONG).show();
+        //for (int i = 0; i < clubNames.size(); i++){
+
+        //}
+
 
         // Set to display club master list xml page
 

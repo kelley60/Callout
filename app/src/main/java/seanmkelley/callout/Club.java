@@ -32,6 +32,14 @@ public class Club {
         return bio;
 
     }
+    private void setBio(String b){
+        this.bio = b;
+    }
+
+    private void setName(String n){
+        this.name = n;
+    }
+
     public ArrayList getCat()
     {
         return cat;
