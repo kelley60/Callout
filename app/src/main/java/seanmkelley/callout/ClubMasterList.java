@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class ClubMasterList extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_club_master_list);
         //the following was in some example code I found online
         //not quite sure what it does but it's probably important, seems to be error trapping
          /*try {
@@ -50,15 +52,18 @@ public class ClubMasterList extends Activity {
 
 
         DbMailer db = new DbMailer("http://web.ics.purdue.edu/~awirth/db_clubs.php", getApplicationContext());
+
         List<Club> clubNames = db.ClubList();
         /*clubNames = new ArrayList<String>(20);
         for (int i = 1; i <= 20; i++)
             clubNames.add("Club " + i);*/
 
         // Set to display club master list xml page
-        setContentView(R.layout.activity_club_master_list);
+
+
 
         // Setup the list view to display the club names
+        /*
         ListView lv = (ListView) findViewById(R.id.masterClubListView);
         lv.setAdapter(new ClubArrayAdapter(this, R.layout.list_item, clubNames));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -70,6 +75,7 @@ public class ClubMasterList extends Activity {
                 startActivity(i);
             }
         });
+        */
     }
 
 

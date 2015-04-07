@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -97,91 +98,90 @@ public class DbMailer {
     }
 
     public List<Club> ClubList() {
+
         accessDatabase();
         //List<Map<String, String>> DataList = new ArrayList<Map<String, String>>();
         List<Club> ClubList = new ArrayList<Club>();
         try {
             JSONObject jsonResponse = new JSONObject(jsonResult);
-            JSONArray jsonMainNode = jsonResponse.optJSONArray("clubs");
-
+            //JSONArray jsonMainNode = jsonResponse.optJSONArray("clubs");
+            //int length = jsonMainNode.length();
+            //Toast.makeText(con, "number of clubs is " + length, Toast.LENGTH_LONG).show();
+            /*
             for (int i = 0; i < jsonMainNode.length(); i++) {
                 JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
                 String name = jsonChildNode.optString("name");
                 String bio = jsonChildNode.optString("bio");
+                if (i == 0){
+                    Toast.makeText(con, name, Toast.LENGTH_LONG).show();
+                }
                 //String outPut = name + "-" + bio;
                 //DataList.add(createEmployee("employees", outPut));
                 Club thisItem = new Club(name, bio, null);
                 ClubList.add(thisItem);
             }
+            */
         } catch (JSONException e) {
             Toast.makeText(con, "Error" + e.toString(),
                     Toast.LENGTH_SHORT).show();
         }
         return ClubList;
+
     }
 
+    /*
+    public List<Club> ClubList() {
+    OkHttpClient client = new OkHttpClient();
+    Request request = new Request.Builder()
+            .url(forecastUrl)
+            .build();
 
+    Call call = client.newCall(request);
+    call.enqueue(new Callback() {
+        @Override
+        public void onFailure(Request request, IOException e) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    toggleRefresh();
+                }
+            });
+            alertUserAboutError();
+        }
+
+        @Override
+        public void onResponse(Response response) throws IOException {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    toggleRefresh();
+                }
+            });
+            try {
+                String jsonData = response.body().string();
+                Log.v(TAG, jsonData);
+                if (response.isSuccessful()) {
+                    mCurrentWeather = getCurrentDetails(jsonData);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            updateDisplay();
+                        }
+                    });
+
+                } else {
+                    alertUserAboutError();
+                }
+            } catch (IOException e) {
+                Log.e(TAG, "Exception caught : ", e);
+            }
+            catch (JSONException e){
+                Log.e(TAG, "Exception caught : ", e);
+            }
+        }
+    });
+
+*/
 
 
 }
-    //FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(getContext());
-/*
-    return output;
-    }
-
-    //probably gonna want to delete this.
-    //will be useful for debugging thought 
-    protected void onPostExecute()
-    {
-        //showNotification("Database interaction complete.");
-    }
-}
-
-/*
-public void write()
-{
-    // Gets the data repository in write mode
-    SQLiteDatabase db = mDbHelper.getWritableDatabase();
-
-// Create a new map of values, where column names are the keys
-    ContentValues values = new ContentValues();
-    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID, id);
-    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, title);
-    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_CONTENT, content);
-
-// Insert the new row, returning the primary key value of the new row
-    long newRowId;
-    newRowId = db.insert(
-            FeedReaderContract.FeedEntry.TABLE_NAME,
-            FeedReaderContract.FeedEntry.COLUMN_NAME_NULLABLE,
-            values);
-}
-
-public void read()
-{
-
-    SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
-// Define a projection that specifies which columns from the database
-// you will actually use after this query.
-    String[] projection = {
-            FeedEntry._ID,
-            FeedEntry.COLUMN_NAME_TITLE,
-            FeedEntry.COLUMN_NAME_UPDATED,
-
-    };
-
-// How you want the results sorted in the resulting Cursor
-    String sortOrder =
-            FeedEntry.COLUMN_NAME_UPDATED + " DESC";
-
-    Cursor c = db.query(
-            FeedEntry.TABLE_NAME,  // The table to query
-            projection,                               // The columns to return
-            selection,                                // The columns for the WHERE clause
-            selectionArgs,                            // The values for the WHERE clause
-            null,                                     // don't group the rows
-            null,                                     // don't filter by row groups
-            sortOrder                                 // The sort order
-    );
-}*/
