@@ -56,6 +56,7 @@ public class DbMailer {
     private String jsonResult;
     private String url;//;"http://web.ics.purdue.edu/~awirth/db_clubs.php";
     private Context con;
+    private List<Club> ClubList = new ArrayList<Club>();
 
     public DbMailer(String s, Context c) {
         url = s;
@@ -145,7 +146,7 @@ public class DbMailer {
 
     public List<Club> ClubList() {
 
-        final List<Club> ClubList = new ArrayList<Club>();
+
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
@@ -170,7 +171,7 @@ public class DbMailer {
                     if (response.isSuccessful()) {
                         //access internet
 
-                        getData(jsonData, ClubList);
+                        getData(jsonData);
 
 
                     } else {
@@ -186,12 +187,13 @@ public class DbMailer {
             }
         });
 
-
+           //returns 0 for some reason?
+        Log.v(TAG,"size is " + ClubList.size());
         return ClubList;
 
     }
 
-    private void getData(String jsonData, List<Club> ClubList) throws JSONException {
+    private void getData(String jsonData) throws JSONException {
         JSONObject data = new JSONObject(jsonData);
         JSONArray array = data.getJSONArray("clubs");
 
@@ -203,6 +205,8 @@ public class DbMailer {
             Log.v(TAG, name + " " + bio);
             Club thisItem = new Club(name, bio, null);
             ClubList.add(thisItem);
+            //returns correct size
+            Log.v(TAG,"size is " + ClubList.size());
         }
 
     }

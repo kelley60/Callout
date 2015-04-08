@@ -3,6 +3,7 @@ package seanmkelley.callout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClubMasterList extends Activity {
-    private List<String> clubNames;
+    public static final String TAG = ClubMasterList.class.getSimpleName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,7 @@ public class ClubMasterList extends Activity {
 
         List<Club> clubNames = db.ClubList();
         clubNames = new ArrayList<Club>();
-        Toast.makeText(this, clubNames.size()+" is club name size",Toast.LENGTH_LONG);
+
         //Toast.makeText(this, clubNames.get(0).getName(), Toast.LENGTH_LONG).show();
         //for (int i = 0; i < clubNames.size(); i++){
 
@@ -106,9 +108,7 @@ public class ClubMasterList extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public String getClubName(int index) {
-        return clubNames.get(index);
-    }
+
 
     public int getItemIdAtIndex (int position) {
         // Eventually, when we are just taking parts of the total group of clubs,
