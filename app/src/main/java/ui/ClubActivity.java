@@ -41,7 +41,7 @@ public class ClubActivity extends Activity{
                 break;
 
             case R.id.action_calendar:
-                i = new Intent("calendar");
+                i = new Intent("Calendar");
                 break;
 
             case R.id.action_club_details:

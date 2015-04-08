@@ -202,11 +202,11 @@ public class DbMailer {
 
             String name = jsonChildNode.optString("Name");
             String bio = jsonChildNode.optString("Bio");
-            Log.v(TAG, name + " " + bio);
+            Log.v(TAG, name + "\nDescription: " + bio);
             Club thisItem = new Club(name, bio, null);
             ClubList.add(thisItem);
             //returns correct size
-            Log.v(TAG,"size is " + ClubList.size());
+            Log.v(TAG,"new size is " + ClubList.size());
         }
 
     }

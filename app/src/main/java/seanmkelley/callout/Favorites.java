@@ -24,26 +24,26 @@ public class Favorites extends Activity {
     }
 
 
-    public void populate(){
-        DbMailer db = new DbMailer("http://web.ics.purdue.edu/~awirth/db_clubs.php", getApplicationContext());
-        List<Club> clubNames = db.ClubList();
-        /*clubNames = new ArrayList<String>(20);
-        for (int i = 1; i <= 20; i++)
-            clubNames.add("Club " + i);*/
-
-        // Setup the list view to display the club names
-        ListView lv = (ListView) findViewById(R.id.masterClubListView);
-        lv.setAdapter(new ClubArrayAdapter(this, R.layout.list_item, clubNames));
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3) {
-                Intent i = new Intent("ClubPage");
-                i.putExtra("club_id", getItemIdAtIndex(position));
-                i.putExtra("club_name", getClubName(position));
-                startActivity(i);
-            }
-        });
-    }
+//    public void populate(){
+//        DbMailer db = new DbMailer("http://web.ics.purdue.edu/~awirth/db_clubs.php", getApplicationContext());
+//        List<Club> clubNames = db.ClubList();
+//        /*clubNames = new ArrayList<String>(20);
+//        for (int i = 1; i <= 20; i++)
+//            clubNames.add("Club " + i);*/
+//
+//        // Setup the list view to display the club names
+//        ListView lv = (ListView) findViewById(R.id.masterClubListView);
+//        lv.setAdapter(new ClubArrayAdapter(this, R.layout.list_item, clubNames));
+//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3) {
+//                Intent i = new Intent("ClubPage");
+//                i.putExtra("club_id", getItemIdAtIndex(position));
+//                i.putExtra("club_name", getClubName(position));
+//                startActivity(i);
+//            }
+//        });
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

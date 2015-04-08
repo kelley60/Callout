@@ -16,6 +16,8 @@ import java.util.List;
 
 public class ClubMasterList extends Activity {
     public static final String TAG = ClubMasterList.class.getSimpleName();
+    private List<Club> clubList;
+    private ClubArrayAdapter adapter;
 
 
     @Override
@@ -53,11 +55,30 @@ public class ClubMasterList extends Activity {
             System.out.println("SQL exception occurred" + e);
         }*/
 
+        List<Club> clubList = new ArrayList<Club>();
+        ListView lv = (ListView) findViewById(R.id.masterClubListView);
+        adapter = new ClubArrayAdapter(this, R.layout.list_item, clubList);
+        lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3) {
+                Intent i = new Intent("ClubPage");
+                i.putExtra("club_id", getItemIdAtIndex(position));
+                i.putExtra("club_name", getClubName(position));
+                startActivity(i);
+            }
+        });
 
+        HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php", clubList, this);
+
+
+
+        /*
         DbMailer db = new DbMailer("http://web.ics.purdue.edu/~awirth/db_clubs.php", getApplicationContext());
 
         List<Club> clubNames = db.ClubList();
         clubNames = new ArrayList<Club>();
+        */
 
         //Toast.makeText(this, clubNames.get(0).getName(), Toast.LENGTH_LONG).show();
         //for (int i = 0; i < clubNames.size(); i++){
@@ -85,6 +106,14 @@ public class ClubMasterList extends Activity {
         */
     }
 
+    public void updateClubList() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,12 +137,14 @@ public class ClubMasterList extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
     public int getItemIdAtIndex (int position) {
         // Eventually, when we are just taking parts of the total group of clubs,
         // this will need to actually return the clubs id, but just returns the
         // position for now.
         return position;
+    }
+
+    private String getClubName(int position) {
+        return clubList.get(position).getName();
     }
 }
