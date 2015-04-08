@@ -22,4 +22,8 @@
     <string name="title_activity_student">StudentActivity</string>
     <string name="title_activity_student_calender">StudentCalender</string>
 
+    <!--For user information-->
+    <string name="callout_file_key">calloutprefz</string>
+    <string name="userid">userid</string>
+
 </resources>

@@ -1,12 +1,16 @@
 package ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import seanmkelley.callout.*;
+
+import static android.app.PendingIntent.getActivity;
 
 /**
  * Created by Sean on 3/5/2015.
@@ -17,6 +21,23 @@ public class StudentActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_home);
+
+        //get user data
+        Context context = StudentActivity.this;
+        SharedPreferences sharedPref = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        //does this user have an id?
+        int userid = sharedPref.getInt(getString(R.string.userid), 0);
+        if(userid == 0) //does not exist
+        {
+            //we'll need to assign a new one from a (counter?) in the database, and set up the database for the next user
+            SharedPreferences.Editor ed = sharedPref.edit();
+            ed.putInt(getString(R.string.userid), 1);
+            ed.commit();
+        }
+        else //exists
+        {
+            //Great!
+        }
     }
 
     @Override
