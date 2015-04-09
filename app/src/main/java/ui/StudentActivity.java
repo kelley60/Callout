@@ -29,7 +29,7 @@ public class StudentActivity extends Activity{
         int userid = sharedPref.getInt(getString(R.string.userid), 0);
         if(userid == 0) //does not exist
         {
-            //we'll need to assign a new one from a (counter?) in the database, and set up the database for the next user
+            //we'll need to assign a new one from a (counter?) in the database, and set up the database to assign the next user's id
             SharedPreferences.Editor ed = sharedPref.edit();
             ed.putInt(getString(R.string.userid), 1);
             ed.commit();

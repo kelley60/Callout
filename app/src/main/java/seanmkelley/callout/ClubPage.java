@@ -1,6 +1,8 @@
 package seanmkelley.callout;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,13 +11,14 @@ import android.widget.TextView;
 
 public class ClubPage extends Activity {
 
+    String club_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_club_view);
 
-        // I get a warning saying this is redundant, but without it, the app crashes (cannot cast Integer to String)
-        String club_id = (String)getIntent().getExtras().get("club_id").toString();
+        //plz don't, i need this
+        club_id = (String)getIntent().getExtras().get("club_id").toString();
         String club_name = (String)getIntent().getExtras().get("club_name");
 
         TextView t = (TextView) findViewById(R.id.clubName);
@@ -25,6 +28,16 @@ public class ClubPage extends Activity {
         //t.setText(currentClub.getBio());
     }
 
+    public void addFavorite()
+    {
+        Context context = ClubPage.this;
+        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        String favoritesList = sp.getString(getString(R.string.user_favorites), "");
+        favoritesList = favoritesList.concat(club_id);
+        SharedPreferences.Editor ed = sp.edit();
+        ed.putString(getString(R.string.userid), favoritesList);
+        ed.commit();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
