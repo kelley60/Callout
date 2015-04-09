@@ -40,6 +40,7 @@ import java.util.Map;
 
 /**
  * Created by Austin on 3/24/2015.
+ * Old version.  See {@link HTTPGet}
  */
 
 //create the DbMailer with DbMailer db = new DbMailer(<string with the url you want to access here>, getApplicationContext());
@@ -82,7 +83,7 @@ public class DbMailer {
         }
 
         private StringBuilder inputStreamToString(InputStream is) {
-            String rLine = "";
+            String rLine;
             StringBuilder answer = new StringBuilder();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is));
 
@@ -100,7 +101,7 @@ public class DbMailer {
 
     public void accessDatabase() {
         JsonReadTask task = new JsonReadTask();
-        task.execute(new String[]{url});
+        task.execute(url);
     }
 
 

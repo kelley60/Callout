@@ -14,13 +14,14 @@ public class ClubPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_club_view);
 
-        String club_id = (String)getIntent().getExtras().get("club_id");
+        // I get a warning saying this is redundant, but without it, the app crashes (cannot cast Integer to String)
+        String club_id = (String)getIntent().getExtras().get("club_id").toString();
         String club_name = (String)getIntent().getExtras().get("club_name");
 
         TextView t = (TextView) findViewById(R.id.clubName);
         t.setText(club_name);
 
-        t = (TextView) findViewById(R.id.clubBio);
+        //t = (TextView) findViewById(R.id.clubBio);
         //t.setText(currentClub.getBio());
     }
 
