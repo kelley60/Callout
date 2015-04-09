@@ -35,8 +35,21 @@ public class ClubPage extends Activity {
         String favoritesList = sp.getString(getString(R.string.user_favorites), "");
         favoritesList = favoritesList.concat(club_id);
         SharedPreferences.Editor ed = sp.edit();
-        ed.putString(getString(R.string.userid), favoritesList);
+        ed.putString(getString(R.string.user_favorites), favoritesList);
         ed.commit();
+    }
+
+    public void removeFavorite()
+    {
+        Context context = ClubPage.this;
+        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        String favoritesList = sp.getString(getString(R.string.user_favorites), "");
+        int idIndex = favoritesList.indexOf(club_id);
+        String preId = favoritesList.substring(0, idIndex);
+        String subId = favoritesList.substring(idIndex + 8);
+        favoritesList = preId.concat(subId);
+        SharedPreferences.Editor ed = sp.edit();
+        ed.putString(getString(R.string.user_favorites), favoritesList);
     }
 
     @Override
