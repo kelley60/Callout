@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
-
+import java.util.ArrayList;
 /**
  * Created by William on 4/8/2015
  */
@@ -44,8 +44,25 @@ public class HTTPGet {
 
                             String name = jsonChildNode.optString("Name");
                             String bio = jsonChildNode.optString("Bio");
+                            ArrayList<String> Cat = new ArrayList<String>();
+                            String cat1 = jsonChildNode.optString("cat1");
+                            String cat2 = jsonChildNode.optString("cat2");
+                            String cat3 = jsonChildNode.optString("cat3");
+                            String cat4 = jsonChildNode.optString("cat4");
+                            if(cat1!=null){
+                                Cat.add(cat1);
+                                if(cat2!=null){
+                                    Cat.add(cat2);
+                                    if(cat3!=null){
+                                        Cat.add(cat3);
+                                        if(cat4!=null){
+                                            Cat.add(cat4);
+                                        }
+                                    }
+                                }
+                            }
                             System.out.println(name + "\nDescription: " + bio);
-                            Club thisItem = new Club(name, bio, null);
+                            Club thisItem = new Club(name, bio, Cat);
                             list.add(thisItem);
                         }
                     } else {

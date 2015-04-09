@@ -93,7 +93,7 @@ public class DbMailer {
                 }
             } catch (IOException e) {
                 // e.printStackTrace();
-                Toast.makeText(con, "Error..." + e.toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(con, "Error..." + e.toString(), Toast.LENGTH_LONG).show();
             }
             return answer;
         }
@@ -134,8 +134,8 @@ public class DbMailer {
             }
 
         } catch (JSONException e) {
-            Toast.makeText(con, "Error" + e.toString(),
-                    Toast.LENGTH_SHORT).show();
+            //Toast.makeText(con, "Error" + e.toString(),
+                   // Toast.LENGTH_SHORT).show();
         }
 
         return ClubList;
