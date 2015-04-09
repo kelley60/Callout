@@ -17,14 +17,14 @@ public class ClubPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_club_view);
 
-        //plz don't, i need this
+        //receives intent from ClubMasterList
         club_id = (String)getIntent().getExtras().get("club_id").toString();
         String club_name = (String)getIntent().getExtras().get("club_name");
 
         TextView t = (TextView) findViewById(R.id.clubName);
         t.setText(club_name);
 
-        //t = (TextView) findViewById(R.id.clubBio);
+        t = (TextView) findViewById(R.id.clubBio);
         //t.setText(currentClub.getBio());
     }
 
@@ -50,6 +50,22 @@ public class ClubPage extends Activity {
         favoritesList = preId.concat(subId);
         SharedPreferences.Editor ed = sp.edit();
         ed.putString(getString(R.string.user_favorites), favoritesList);
+    }
+
+    public void modFavorite()
+    {
+        //check to see if a club is already favorited. if it is, call removeFavorite. If not, call addFavorite
+        Context context = ClubPage.this;
+        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        String favoritesList = sp.getString(getString(R.string.user_favorites), "");
+        if(favoritesList.contains(club_id))
+        {
+            removeFavorite();
+        }
+        else
+        {
+            addFavorite();
+        }
     }
 
     @Override
