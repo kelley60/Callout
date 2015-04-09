@@ -13,9 +13,9 @@ public class Club {
 
     public String name;
     public int members; //maybe not needed
-    public ArrayList cat; //categories
+    public ArrayList<String> cat; //categories
     public String bio; //bio/description of the club
-    public Club(String n, String b, ArrayList categories)
+    public Club(String n, String b, ArrayList<String> categories)
     {
         name = n;
         //members = m;
@@ -79,23 +79,5 @@ public class Club {
         bio = newBio;
     }
 
-    public void addMeToDatabase()
-    {
-        /*
-        try{
-            //this is gonna take some tinkering
-            //http://www.tutorialspoint.com/javaexamples/java_jdbc.htm seems to be a decent reference
-            Connection con = DriverManager.getConnection("jdbc:mydb.ics.purdue.edu","awirth","alaina007");//not sure on this format
-            //this password is completely different from my mypurdue login if anyone was wondering
-            //we may not want the password sitting right here in the code...
 
-            String query1 = "insert into emp values(2,'The Moonwalking club','Dance yo.')";
-            //stmt.execute(query1);
-            }
-
-        catch(SQLException e){
-            System.out.println("SQL exception occurred" + e);
-    }
-    */
-    }
 }
