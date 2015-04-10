@@ -23,7 +23,7 @@ public class ClubMasterList extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_master_list);
 
-        clubList = new ArrayList<>();
+        clubList = new ArrayList<Club>();
 
         ListView lv = (ListView) findViewById(R.id.masterClubListView);
         adapter = new ClubArrayAdapter(this, R.layout.list_item, clubList);
@@ -49,7 +49,7 @@ public class ClubMasterList extends Activity {
      * This should be called once after downloading the club list.
      */
     public void setMasterClubList() {
-        masterClubList = new ArrayList<>(clubList);
+        masterClubList = new ArrayList<Club>(clubList);
     }
 
     /**
@@ -57,7 +57,7 @@ public class ClubMasterList extends Activity {
      * Note that this does not update the ListView displaying the clubs
      */
     public void resetClubList() {
-        clubList = new ArrayList<>(masterClubList);
+        clubList = new ArrayList<Club>(masterClubList);
     }
 
     /**
