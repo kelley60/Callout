@@ -15,12 +15,14 @@ public class Club {
     public int members; //maybe not needed
     public ArrayList<String> cat; //categories
     public String bio; //bio/description of the club
+    public boolean show;
     public Club(String n, String b, ArrayList<String> categories)
     {
         name = n;
         //members = m;
         cat = categories;
         bio = b;
+        show = true;
     }
 
     public String getName()
@@ -35,7 +37,14 @@ public class Club {
     private void setBio(String b){
         this.bio = b;
     }
-
+    public void show()
+    {
+        show = true;
+    }
+    public void hide()
+    {
+        show = false;
+    }
     private void setName(String n){
         this.name = n;
     }

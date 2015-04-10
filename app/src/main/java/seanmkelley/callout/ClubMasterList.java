@@ -1,15 +1,17 @@
 package seanmkelley.callout;
 
-import android.app.Activity;
+    import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
+    import android.view.MenuInflater;
+    import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+    import android.widget.PopupMenu;
 
-import java.util.ArrayList;
+    import java.util.ArrayList;
 import java.util.List;
 
 public class ClubMasterList extends Activity {
@@ -51,7 +53,9 @@ public class ClubMasterList extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_club_master_list, menu);
+        //getMenuInflater().inflate(R.menu.menu_club_master_list, menu);
+
+        getMenuInflater().inflate(R.menu.menu_filter, menu); //experimental
         return true;
     }
 
@@ -62,12 +66,112 @@ public class ClubMasterList extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+            case R.id.action_filter_sports:
+                if (item.isChecked()) item.setChecked(false);
+                else {
+                    item.setChecked(true);
+                    //if(item.isChecked()){
+                    int max = clubList.size();
+                    for (int i = 0; i <= max; i++) {
+                        if (clubList.get(i).cat.indexOf("Sports") == -1) {
+                            //clubList.get(i).hide();
+                            clubList.remove(clubList.get(i));
+                            //
+                        }
+                        /*else{
+                            clubList.get(i).show();
+                        }*/
+
+                        // }
+                        //filter the list
+                        updateClubList();
+                    }
+                }return true;
+            case R.id.action_filter_hobby:
+                if (item.isChecked()) item.setChecked(false);
+                else {
+                    item.setChecked(true);
+                    //if(item.isChecked()){
+                    int max = clubList.size();
+                    for (int i = 0; i <= max; i++) {
+                        if (clubList.get(i).cat.indexOf("Hobby") == -1) {
+                            //clubList.get(i).hide();
+                            clubList.remove(clubList.get(i));
+                            //
+                        }
+                        /*else{
+                            clubList.get(i).show();
+                        }*/
+
+                        // }
+                        //filter the list
+                        updateClubList();
+                    }
+                }
+                return true;
+            case R.id.action_filter_academic:
+                if (item.isChecked()) item.setChecked(false);
+                else {
+                    item.setChecked(true);
+                    //if(item.isChecked()){
+                    int max = clubList.size();
+                    for (int i = 0; i <= max; i++) {
+                        if (clubList.get(i).cat.indexOf("Academic") == -1) {
+                            //clubList.get(i).hide();
+                            clubList.remove(clubList.get(i));
+                            //
+                        }
+                        /*else{
+                            clubList.get(i).show();
+                        }*/
+
+                        // }
+                        //filter the list
+                        updateClubList();
+                    }
+                }
+                return true;
+            case R.id.action_filter_other:
+                if (item.isChecked()) item.setChecked(false);
+                else {
+                    item.setChecked(true);
+                    //if(item.isChecked()){
+                    int max = clubList.size();
+                    for (int i = 0; i <= max; i++) {
+                        if (clubList.get(i).cat.indexOf("Other") == -1) {
+                            //clubList.get(i).hide();
+                            clubList.remove(clubList.get(i));
+                            //
+                        }
+                        /*else{
+                            clubList.get(i).show();
+                        }*/
+
+                        // }
+                        //filter the list
+                        updateClubList();
+                    }
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+
+        //noinspection SimplifiableIfStatement
+        /*if (id == R.id.action_club_filter) {
+            PopupMenu filter = new PopupMenu(getApplicationContext(),findViewById(R.id.action_master_club_list));
+            MenuInflater menuInflater = filter.getMenuInflater();
+            View menuItemView = findViewById(R.id.action_club_filter); // SAME ID AS MENU ID
+            PopupMenu popupMenu = new PopupMenu(this, menuItemView);
+            popupMenu.inflate(R.menu.menu_filter);
+
+
+            return true;
+        }*/
+
+        //return super.onOptionsItemSelected(item);
     }
 
     public int getItemIdAtIndex (int position) {
