@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class ClubPage extends Activity {
 
@@ -24,8 +26,9 @@ public class ClubPage extends Activity {
         TextView t = (TextView) findViewById(R.id.clubName);
         t.setText(club_name);
 
+        String club_bio = (String)getIntent().getExtras().get("club_bio").toString();
         t = (TextView) findViewById(R.id.clubBio);
-        //t.setText(currentClub.getBio());
+        t.setText(club_bio);
     }
 
     public void addFavorite()

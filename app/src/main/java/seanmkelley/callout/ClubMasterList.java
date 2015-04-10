@@ -32,6 +32,7 @@ public class ClubMasterList extends Activity {
                 Intent i = new Intent("ClubPage");
                 i.putExtra("club_id", getItemIdAtIndex(position));
                 i.putExtra("club_name", getClubName(position));
+                i.putExtra("club_bio", getClubBio(position));
                 startActivity(i);
             }
         });
@@ -80,4 +81,9 @@ public class ClubMasterList extends Activity {
     private String getClubName(int position) {
         return clubList.get(position).getName();
     }
+
+    private String getClubBio(int position) {
+        return clubList.get(position).getBio();
+    }
+
 }

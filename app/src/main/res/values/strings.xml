@@ -26,5 +26,4 @@
     <!--For user details-->
     <string name="callout_file_key">calloutfilez</string>
     <string name="user_favorites">userfavorites</string>
-
 </resources>
