@@ -23,7 +23,7 @@ public class ClubMasterList extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_master_list);
 
-        clubList = new ArrayList<Club>();
+        clubList = new ArrayList<>();
 
         ListView lv = (ListView) findViewById(R.id.masterClubListView);
         adapter = new ClubArrayAdapter(this, R.layout.list_item, clubList);
@@ -39,13 +39,31 @@ public class ClubMasterList extends Activity {
             }
         });
 
+        // Retrieve clubList from database
         HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php", clubList, this);
     }
 
+    /**
+     * Sets masterClubList to whatever the current club list is.
+     * Makes a shallow copy.
+     * This should be called once after downloading the club list.
+     */
     public void setMasterClubList() {
-        masterClubList = new ArrayList<Club>(clubList);
+        masterClubList = new ArrayList<>(clubList);
     }
 
+    /**
+     * Call this method to reset clubList to the masterClubList
+     * Note that this does not update the ListView displaying the clubs
+     */
+    public void resetClubList() {
+        clubList = new ArrayList<>(masterClubList);
+    }
+
+    /**
+     * Update the ListView that displays the clubs.  This should be called
+     * whenever you want to display a change made to clubList.
+     */
     public void updateClubList() {
         runOnUiThread(new Runnable() {
             @Override
