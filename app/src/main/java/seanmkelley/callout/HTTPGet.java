@@ -74,6 +74,9 @@ public class HTTPGet {
                     e.printStackTrace();
                 }
 
+                // Let the master list know that we have finished downloading
+                // and parsing the clubs from the database
+                cml.setMasterClubList();
                 cml.updateClubList();
             }
         });

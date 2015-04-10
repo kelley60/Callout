@@ -15,6 +15,7 @@ public class Club {
     public int members; //maybe not needed
     public ArrayList<String> cat; //categories
     public String bio; //bio/description of the club
+
     public Club(String n, String b, ArrayList<String> categories)
     {
         name = n;
@@ -27,10 +28,10 @@ public class Club {
     {
         return name;
     }
+
     public String getBio()
     {
         return bio;
-
     }
     private void setBio(String b){
         this.bio = b;

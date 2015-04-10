@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClubMasterList extends Activity {
+    private List<Club> masterClubList;
     private List<Club> clubList;
     private ClubArrayAdapter adapter;
 
@@ -23,6 +24,7 @@ public class ClubMasterList extends Activity {
         setContentView(R.layout.activity_club_master_list);
 
         clubList = new ArrayList<Club>();
+
         ListView lv = (ListView) findViewById(R.id.masterClubListView);
         adapter = new ClubArrayAdapter(this, R.layout.list_item, clubList);
         lv.setAdapter(adapter);
@@ -38,6 +40,10 @@ public class ClubMasterList extends Activity {
         });
 
         HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php", clubList, this);
+    }
+
+    public void setMasterClubList() {
+        masterClubList = new ArrayList<Club>(clubList);
     }
 
     public void updateClubList() {
