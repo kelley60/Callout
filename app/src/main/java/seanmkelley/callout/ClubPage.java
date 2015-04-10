@@ -2,22 +2,31 @@ package seanmkelley.callout;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import ui.ClubSignIn;
+import ui.StudentActivity;
+
 
 public class ClubPage extends Activity {
+    private Button joinButton;
 
     String club_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_club_view);
+
+        joinButton = (Button) findViewById(R.id.joinButton);
 
         //receives intent from ClubMasterList
         club_id = (String)getIntent().getExtras().get("club_id").toString();
@@ -29,6 +38,13 @@ public class ClubPage extends Activity {
         String club_bio = (String)getIntent().getExtras().get("club_bio").toString();
         t = (TextView) findViewById(R.id.clubBio);
         t.setText(club_bio);
+
+        joinButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    modFavorite();
+            }
+        });
     }
 
     public void addFavorite()
