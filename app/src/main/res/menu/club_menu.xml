@@ -5,10 +5,13 @@
           android:title="@string/action_master_club_list"
           android:orderInCategory="1"
           android:showAsAction="never" />
+
+    <!-- May add something else here in future?
     <item android:id="@+id/action_club_members"
           android:title="Club Members"
           android:orderInCategory="2"
           android:showAsAction="never" />
+    -->
     <item android:id="@+id/action_calendar"
           android:title="@string/action_calendar"
           android:orderInCategory="3"
