@@ -84,7 +84,6 @@ public class ClubMasterList extends Activity {
                         }*/
 
                         // }
-                        //filter the list
                         updateClubList();
                     }
                 }return true;
