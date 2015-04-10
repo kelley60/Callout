@@ -20,7 +20,7 @@ import ui.StudentActivity;
 public class ClubPage extends Activity {
     private Button joinButton;
 
-    String club_id;
+    String club_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +29,7 @@ public class ClubPage extends Activity {
         joinButton = (Button) findViewById(R.id.joinButton);
 
         //receives intent from ClubMasterList
-        club_id = (String)getIntent().getExtras().get("club_id").toString();
-        String club_name = (String)getIntent().getExtras().get("club_name");
+        club_name = (String)getIntent().getExtras().get("club_name");
 
         TextView t = (TextView) findViewById(R.id.clubName);
         t.setText(club_name);
@@ -52,7 +51,7 @@ public class ClubPage extends Activity {
         Context context = ClubPage.this;
         SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
         String favoritesList = sp.getString(getString(R.string.user_favorites), "");
-        favoritesList = favoritesList.concat(club_id);
+        favoritesList = favoritesList.concat(club_name + '\n');
         SharedPreferences.Editor ed = sp.edit();
         ed.putString(getString(R.string.user_favorites), favoritesList);
         ed.commit();
@@ -63,12 +62,13 @@ public class ClubPage extends Activity {
         Context context = ClubPage.this;
         SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
         String favoritesList = sp.getString(getString(R.string.user_favorites), "");
-        int idIndex = favoritesList.indexOf(club_id);
+        int idIndex = favoritesList.indexOf(club_name);
         String preId = favoritesList.substring(0, idIndex);
-        String subId = favoritesList.substring(idIndex + 8);
+        String subId = favoritesList.substring(idIndex + club_name.length() + 1);
         favoritesList = preId.concat(subId);
         SharedPreferences.Editor ed = sp.edit();
         ed.putString(getString(R.string.user_favorites), favoritesList);
+        ed.commit();
     }
 
     public void modFavorite()
@@ -77,7 +77,7 @@ public class ClubPage extends Activity {
         Context context = ClubPage.this;
         SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
         String favoritesList = sp.getString(getString(R.string.user_favorites), "");
-        if(favoritesList.contains(club_id))
+        if(favoritesList.contains(club_name))
         {
             removeFavorite();
         }
