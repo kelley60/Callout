@@ -2,14 +2,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@android:color/holo_blue_light">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="In Club Homepage"
+        android:text="Club Homepage"
         android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:paddingTop="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clubHomeCalendarButtonId"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFFFFFF"
+        android:text="Calendar"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Master Club List"
+        android:id="@+id/clubHomeClubListButtonId"
+        android:layout_above="@+id/clubHomeCalendarButtonId"
+        android:layout_alignLeft="@+id/clubHomeCalendarButtonId"
+        android:layout_alignStart="@+id/clubHomeCalendarButtonId"
+        android:layout_alignRight="@+id/clubHomeCalendarButtonId"
+        android:layout_alignEnd="@+id/clubHomeCalendarButtonId"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFFFFFF"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Club Details"
+        android:id="@+id/clubHomeClubDetailsButtonId"
+        android:layout_below="@+id/clubHomeCalendarButtonId"
+        android:layout_alignRight="@+id/clubHomeCalendarButtonId"
+        android:layout_alignEnd="@+id/clubHomeCalendarButtonId"
+        android:layout_alignLeft="@+id/clubHomeCalendarButtonId"
+        android:layout_alignStart="@+id/clubHomeCalendarButtonId"
+        android:background="#FFFFFFFF"/>
 </RelativeLayout>
