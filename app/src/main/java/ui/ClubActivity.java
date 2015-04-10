@@ -53,7 +53,7 @@ public class ClubActivity extends Activity{
                 break;
 
             default:
-                i = new Intent(ClubActivity.this,MyActivity.class);
+                i = new Intent(ClubActivity.this,ClubSignIn.class);
                 break;
         }
 

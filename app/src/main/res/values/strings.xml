@@ -21,5 +21,6 @@
     <string name="title_activity_club">ClubActivity</string>
     <string name="title_activity_student">StudentActivity</string>
     <string name="title_activity_student_calender">StudentCalender</string>
+    <string name="title_activity_club_sign_in">ClubSignIn</string>
 
 </resources>

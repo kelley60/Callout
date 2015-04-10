@@ -87,7 +87,7 @@ public class MyActivity extends Activity {
             }
 
             if (isClub){
-                userIntent = new Intent(MyActivity.this,ClubActivity.class);
+                userIntent = new Intent(MyActivity.this,ClubSignIn.class);
                 startActivity(userIntent);
             }
             }
