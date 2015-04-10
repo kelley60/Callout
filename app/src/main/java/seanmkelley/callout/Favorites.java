@@ -1,26 +1,72 @@
 package seanmkelley.callout;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
-public class Favorites extends Activity {
+public class Favorites extends Activity{
 
-    private List<String> clubNames;
+    private ArrayList<Club> masterClubList;
+    private ArrayList<Club> favoritesList;
+    private ClubArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_favorites);
+        favoritesList = new ArrayList<Club>();
 
+        ListView lv = (ListView) findViewById(R.id.listView2);
+        adapter = new ClubArrayAdapter(this, R.layout.list_item, favoritesList);
+        lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3) {
+                Intent i = new Intent("ClubPage");
+                i.putExtra("club_name", getClubName(position));
+                i.putExtra("club_bio", getClubBio(position));
+                startActivity(i);
+            }
+        });
+
+        //Retrieve favorites list, separate into array
+        Context context = Favorites.this;
+        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        String userFavorites = sp.getString(getString(R.string.user_favorites), "");
+
+        //do they even have favorites?
+        if(userFavorites.equals(""))
+        {
+            TextView t = (TextView) findViewById(R.id.errorView);
+            t.setText("No Favorites Found");
+        }
+       else
+        {
+            TextView t = (TextView) findViewById(R.id.errorView);
+            t.setText(userFavorites);
+            /*String[] favoritesNames = new String[userFavorites.length() / 2];
+            int c = 0;
+            int i = 0;
+            while (c < userFavorites.length())
+            {
+                favoritesNames[i].concat(userFavorites.substring(c, userFavorites.indexOf('\n', c) - 1));
+                c += favoritesNames[i].length() + 1;
+                i++;
+            }*/
+        }
     }
 
 
@@ -67,14 +113,11 @@ public class Favorites extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public String getClubName(int index) {
-        return clubNames.get(index);
+    private String getClubName(int position) {
+        return favoritesList.get(position).getName();
     }
 
-    public int getItemIdAtIndex (int position) {
-        // Eventually, when we are just taking parts of the total group of clubs,
-        // this will need to actually return the clubs id, but just returns the
-        // position for now.
-        return position;
+    private String getClubBio(int position) {
+        return favoritesList.get(position).getBio();
     }
 }
