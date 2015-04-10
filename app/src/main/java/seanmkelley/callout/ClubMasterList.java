@@ -15,6 +15,7 @@ import android.widget.ListView;
 import java.util.List;
 
 public class ClubMasterList extends Activity {
+    private List<Club> masterClubList;
     private List<Club> clubList;
     private ClubArrayAdapter adapter;
 
@@ -25,6 +26,7 @@ public class ClubMasterList extends Activity {
         setContentView(R.layout.activity_club_master_list);
 
         clubList = new ArrayList<Club>();
+
         ListView lv = (ListView) findViewById(R.id.masterClubListView);
         adapter = new ClubArrayAdapter(this, R.layout.list_item, clubList);
         lv.setAdapter(adapter);
@@ -34,13 +36,36 @@ public class ClubMasterList extends Activity {
                 Intent i = new Intent("ClubPage");
                 i.putExtra("club_id", getItemIdAtIndex(position));
                 i.putExtra("club_name", getClubName(position));
+                i.putExtra("club_bio", getClubBio(position));
                 startActivity(i);
             }
         });
 
+        // Retrieve clubList from database
         HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php", clubList, this);
     }
 
+    /**
+     * Sets masterClubList to whatever the current club list is.
+     * Makes a shallow copy.
+     * This should be called once after downloading the club list.
+     */
+    public void setMasterClubList() {
+        masterClubList = new ArrayList<Club>(clubList);
+    }
+
+    /**
+     * Call this method to reset clubList to the masterClubList
+     * Note that this does not update the ListView displaying the clubs
+     */
+    public void resetClubList() {
+        clubList = new ArrayList<Club>(masterClubList);
+    }
+
+    /**
+     * Update the ListView that displays the clubs.  This should be called
+     * whenever you want to display a change made to clubList.
+     */
     public void updateClubList() {
         runOnUiThread(new Runnable() {
             @Override
@@ -183,4 +208,9 @@ public class ClubMasterList extends Activity {
     private String getClubName(int position) {
         return clubList.get(position).getName();
     }
+
+    private String getClubBio(int position) {
+        return clubList.get(position).getBio();
+    }
+
 }

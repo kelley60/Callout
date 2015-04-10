@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="seanmkelley.callout" >
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name="ui.MyActivity"
             android:label="@string/app_name" >
@@ -21,8 +22,6 @@
             android:name=".ClubMasterList"
             android:label="@string/title_activity_club_master_list"
             android:parentActivityName="ui.StudentActivity" >
-
-
             <intent-filter>
                 <action android:name="ClubMasterList" />
 
@@ -33,7 +32,6 @@
             android:name=".Favorites"
             android:label="@string/title_activity_favorites"
             android:parentActivityName="ui.StudentActivity" >
-
             <intent-filter>
                 <action android:name="Favorites" />
 
@@ -44,8 +42,6 @@
             android:name="calendar.CalendarActivity"
             android:label="@string/title_activity_calendar"
             android:parentActivityName="ui.StudentActivity" >
-
-
             <intent-filter>
                 <action android:name="Calendar" />
 
@@ -56,8 +52,6 @@
             android:name=".PersonalDetails"
             android:label="@string/title_activity_personal_details"
             android:parentActivityName="ui.StudentActivity" >
-
-
             <intent-filter>
                 <action android:name="PersonalDetails" />
 
@@ -68,8 +62,6 @@
             android:name=".ClubPage"
             android:label="@string/title_activity_club_page"
             android:parentActivityName="ui.StudentActivity" >
-
-
             <intent-filter>
                 <action android:name="ClubPage" />
 
@@ -79,8 +71,7 @@
         <activity
             android:name="ui.ClubActivity"
             android:label="@string/title_activity_club"
-            android:parentActivityName="ui.MyActivity" >
-
+            android:parentActivityName="ui.ClubSignIn" >
             <intent-filter>
                 <action android:name="ClubActivity" />
 
@@ -101,7 +92,24 @@
             android:name=".StudentCalender"
             android:label="@string/title_activity_student_calender"
             android:parentActivityName="ui.StudentActivity" >
+        </activity>
+        <activity
+            android:name="ui.ClubSignIn"
+            android:label="@string/title_activity_club_sign_in"
+            android:parentActivityName="ui.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.MyActivity" />
+        </activity>
+        <activity
+            android:name=".ClubClubView"
+            android:label="@string/title_activity_club_club_view"
+            android:parentActivityName="ui.ClubActivity" >
+            <intent-filter>
+                <action android:name="ClubClubView" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

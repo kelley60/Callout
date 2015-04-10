@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_favorites">Favorites</string>
     <string name="action_personal_details">Personal Details</string>
-    <string name="action_master_club_list">Master Club List</string>
+    <string name="action_master_club_list">Club Master List</string>
     <string name="action_calendar">Calendar</string>
     <string name="title_activity_club_master_list">Club Master List</string>
     <string name="action_settings">Settings</string>
@@ -21,5 +21,10 @@
     <string name="title_activity_club">ClubActivity</string>
     <string name="title_activity_student">StudentActivity</string>
     <string name="title_activity_student_calender">StudentCalender</string>
+    <string name="title_activity_club_sign_in">ClubSignIn</string>
+    <string name="title_activity_club_club_view">ClubClubView</string>
 
+    <!--For user details-->
+    <string name="callout_file_key">calloutfilez</string>
+    <string name="user_favorites">userfavorites</string>
 </resources>

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import seanmkelley.callout.*;
 
@@ -14,10 +16,46 @@ import seanmkelley.callout.*;
  */
 public class ClubActivity extends Activity{
 
+    private Button mClubListButton;
+    private Button mCalendarButton;
+    private Button mClubDetailsButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.club_home);
+
+        mClubListButton = (Button) findViewById(R.id.clubHomeClubListButtonId);
+        mCalendarButton = (Button) findViewById(R.id.clubHomeCalendarButtonId);
+        mClubDetailsButton = (Button) findViewById(R.id.clubHomeClubDetailsButtonId);
+
+        mClubListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userIntent;
+                userIntent = new Intent("ClubMasterList");
+                startActivity(userIntent);
+            }
+        });
+
+        mCalendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userIntent;
+                userIntent = new Intent("Calendar");
+                startActivity(userIntent);
+            }
+        });
+
+        mClubDetailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userIntent;
+                userIntent = new Intent(ClubActivity.this,ClubClubView.class);
+                startActivity(userIntent);
+            }
+        });
+
     }
 
     @Override
@@ -45,15 +83,18 @@ public class ClubActivity extends Activity{
                 break;
 
             case R.id.action_club_details:
-                i = new Intent("ClubDetails");
+                i = new Intent(ClubActivity.this,ClubClubView.class);
                 break;
 
+            /*
+            may add later?
             case R.id.action_club_members:
                 i = new Intent("Club_Members");
                 break;
+                */
 
             default:
-                i = new Intent(ClubActivity.this,MyActivity.class);
+                i = new Intent(ClubActivity.this,ClubSignIn.class);
                 break;
         }
 

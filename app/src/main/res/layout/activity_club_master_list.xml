@@ -7,16 +7,12 @@
     tools:context="seanmkelley.callout.ClubMasterList"
     android:background="@android:color/white">
 
-    <TextView android:text="@string/title_activity_club_master_list" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/action_master_club_list" />
-
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/masterClubListView"
-        android:layout_below="@+id/action_master_club_list"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"/>
 
 </RelativeLayout>

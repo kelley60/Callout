@@ -2,14 +2,69 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@android:color/holo_blue_light">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="In Student Homepage"
+        android:text="Student Homepage"
         android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF"
+        android:paddingTop="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calendar"
+        android:id="@+id/studentHomeCalendarButtonId"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignRight="@+id/studentHomeFavoritesButtonId"
+        android:layout_alignEnd="@+id/studentHomeFavoritesButtonId"
+        android:layout_alignLeft="@+id/studentHomeFavoritesButtonId"
+        android:layout_marginBottom="10dp"
+        android:layout_alignStart="@+id/studentHomeFavoritesButtonId"
+        android:background="#FFFFFFFF"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorites"
+        android:id="@+id/studentHomeFavoritesButtonId"
+        android:layout_above="@+id/studentHomeCalendarButtonId"
+        android:layout_marginBottom="10dp"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:background="#FFFFFFFF"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Personal Details"
+        android:id="@+id/studentHomePersonalDetailsButtonId"
+        android:layout_below="@+id/studentHomeCalendarButtonId"
+        android:layout_alignRight="@+id/studentHomeCalendarButtonId"
+        android:layout_alignEnd="@+id/studentHomeCalendarButtonId"
+        android:layout_alignLeft="@+id/studentHomeCalendarButtonId"
+        android:layout_alignStart="@+id/studentHomeCalendarButtonId"
+        android:background="#FFFFFFFF"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Master Club List"
+        android:id="@+id/studentHomeClubListButtonId"
+        android:layout_above="@+id/studentHomeFavoritesButtonId"
+        android:layout_alignRight="@+id/studentHomeFavoritesButtonId"
+        android:layout_alignEnd="@+id/studentHomeFavoritesButtonId"
+        android:layout_alignLeft="@+id/studentHomeFavoritesButtonId"
+        android:layout_alignStart="@+id/studentHomeFavoritesButtonId"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFFFFFF"/>
+
 </RelativeLayout>

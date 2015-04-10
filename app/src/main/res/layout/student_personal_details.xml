@@ -5,41 +5,58 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="seanmkelley.callout.PersonalDetails"
-    android:background="@android:color/white">
+    android:background="@android:color/holo_blue_light">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <CheckBox
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Sports"
+        android:id="@+id/personalDetailsSportsCheckId"
+        android:textSize="36dp"
+        android:layout_marginTop="144dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Academic"
+        android:id="@+id/personalDetailsAcademicCheckId"
+        android:layout_below="@+id/personalDetailsSportsCheckId"
+        android:layout_alignLeft="@+id/personalDetailsSportsCheckId"
+        android:layout_alignStart="@+id/personalDetailsSportsCheckId"
+        android:textSize="36dp"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hobby"
+        android:id="@+id/personalDetailsHobbyId"
+        android:layout_below="@+id/personalDetailsAcademicCheckId"
+        android:layout_alignLeft="@+id/personalDetailsAcademicCheckId"
+        android:layout_alignStart="@+id/personalDetailsAcademicCheckId"
+        android:textSize="36dp"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Other"
+        android:id="@+id/personalDetailsOtherCheckId"
+        android:layout_below="@+id/personalDetailsHobbyId"
+        android:layout_alignLeft="@+id/personalDetailsHobbyId"
+        android:layout_alignStart="@+id/personalDetailsHobbyId"
+        android:textSize="36dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you interested in..."
+        android:id="@+id/personalDetailsHeaderId"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/personal_details_horizontal_layout">
+        android:textSize="30dp"
+        android:textColor="@android:color/white"
+        android:paddingTop="20dp"/>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/personal_details_question_layout">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/textView3"
-                android:layout_weight="1"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/personal_details_answer_layout">
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText"
-                android:layout_weight="1"/>
-        </LinearLayout>
-    </LinearLayout>
 </RelativeLayout>

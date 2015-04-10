@@ -1,22 +1,74 @@
 package ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import seanmkelley.callout.*;
+
+import static android.app.PendingIntent.getActivity;
 
 /**
  * Created by Sean on 3/5/2015.
  */
 public class StudentActivity extends Activity{
 
+    private Button mClubListButton;
+    private Button mCalendarButton;
+    private Button mPersonalDetailsButton;
+    private Button mFavoritesButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_home);
+
+        mClubListButton = (Button) findViewById(R.id.studentHomeClubListButtonId);
+        mCalendarButton = (Button) findViewById(R.id.studentHomeCalendarButtonId);
+        mPersonalDetailsButton = (Button) findViewById(R.id.studentHomePersonalDetailsButtonId);
+        mFavoritesButton = (Button) findViewById(R.id.studentHomeFavoritesButtonId);
+
+        mClubListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userIntent;
+                userIntent = new Intent("ClubMasterList");
+                startActivity(userIntent);
+            }
+        });
+
+        mCalendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userIntent;
+                userIntent = new Intent("Calendar");
+                startActivity(userIntent);
+            }
+        });
+
+        mPersonalDetailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userIntent;
+                userIntent = new Intent("PersonalDetails");
+                startActivity(userIntent);
+            }
+        });
+
+        mFavoritesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userIntent;
+                userIntent = new Intent("Favorites");
+                startActivity(userIntent);
+            }
+        });
     }
 
     @Override
