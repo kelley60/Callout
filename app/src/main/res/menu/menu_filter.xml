@@ -17,6 +17,10 @@
         android:title="Other"
         android:orderInCategory="4"
         android:showAsAction="never" />
+       <item android:id="@+id/action_filter_all"
+           android:title="All"
+           android:orderInCategory="5"
+           android:showAsAction="never" />
 
 
    </group>

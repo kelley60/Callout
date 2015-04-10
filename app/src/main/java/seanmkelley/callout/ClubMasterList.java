@@ -93,15 +93,19 @@ public class ClubMasterList extends Activity {
 
         switch (item.getItemId()){
             case R.id.action_filter_sports:
-                if (item.isChecked()) item.setChecked(false);
-                else {
-                    item.setChecked(true);
-                    //if(item.isChecked()){
+                if (item.isChecked()){
+                    item.setChecked(false);
+                    return true;
+                }
+                else{
+                    item.setChecked(true);}
+                if(item.isChecked()){
                     int max = clubList.size();
-                    for (int i = 0; i <= max; i++) {
+                    for (int i = 0; i <= clubList.size(); i++) {
                         if (clubList.get(i).cat.indexOf("Sports") == -1) {
                             //clubList.get(i).hide();
                             clubList.remove(clubList.get(i));
+                            i=i-1;
                             //
                         }
                         /*else{
@@ -109,19 +113,27 @@ public class ClubMasterList extends Activity {
                         }*/
 
                         // }
+                        //filter the list
                         updateClubList();
                     }
-                }return true;
+                }
+                return true;
             case R.id.action_filter_hobby:
-                if (item.isChecked()) item.setChecked(false);
-                else {
-                    item.setChecked(true);
-                    //if(item.isChecked()){
+                if (item.isChecked()){
+                    item.setChecked(false);
+                    clubList.clear();
+                    HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php", clubList, this);
+                    return true;
+                }
+                else{
+                    item.setChecked(true);}
+                    if(item.isChecked()){
                     int max = clubList.size();
-                    for (int i = 0; i <= max; i++) {
+                    for (int i = 0; i <= clubList.size(); i++) {
                         if (clubList.get(i).cat.indexOf("Hobby") == -1) {
                             //clubList.get(i).hide();
                             clubList.remove(clubList.get(i));
+                            i=i-1;
                             //
                         }
                         /*else{
@@ -135,21 +147,26 @@ public class ClubMasterList extends Activity {
                 }
                 return true;
             case R.id.action_filter_academic:
-                if (item.isChecked()) item.setChecked(false);
-                else {
-                    item.setChecked(true);
-                    //if(item.isChecked()){
+                if (item.isChecked()){
+                    item.setChecked(false);
+                    //clubList.clear();
+                    //HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php", clubList, this);
+                    return true;
+                }
+                else{
+                    item.setChecked(true);}
+                if(item.isChecked()){
                     int max = clubList.size();
-                    for (int i = 0; i <= max; i++) {
+                    for (int i = 0; i <= clubList.size(); i++) {
                         if (clubList.get(i).cat.indexOf("Academic") == -1) {
                             //clubList.get(i).hide();
                             clubList.remove(clubList.get(i));
+                            i=i-1;
                             //
                         }
                         /*else{
                             clubList.get(i).show();
                         }*/
-
                         // }
                         //filter the list
                         updateClubList();
@@ -157,15 +174,19 @@ public class ClubMasterList extends Activity {
                 }
                 return true;
             case R.id.action_filter_other:
-                if (item.isChecked()) item.setChecked(false);
-                else {
-                    item.setChecked(true);
-                    //if(item.isChecked()){
+                if (item.isChecked()){
+                    item.setChecked(false);
+                    return true;
+                }
+                else{
+                    item.setChecked(true);}
+                if(item.isChecked()){
                     int max = clubList.size();
-                    for (int i = 0; i <= max; i++) {
+                    for (int i = 0; i <= clubList.size(); i++) {
                         if (clubList.get(i).cat.indexOf("Other") == -1) {
                             //clubList.get(i).hide();
                             clubList.remove(clubList.get(i));
+                            i=i-1;
                             //
                         }
                         /*else{
@@ -178,6 +199,20 @@ public class ClubMasterList extends Activity {
                     }
                 }
                 return true;
+            case R.id.action_filter_all:
+                if (item.isChecked()){
+                    item.setChecked(false);
+                    return true;
+                }
+                else{
+                    item.setChecked(true);}
+                if(item.isChecked()){
+                    clubList.clear();
+                    HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php",clubList,this);
+
+                    }
+
+                     return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
