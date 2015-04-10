@@ -68,6 +68,7 @@ public class ClubPage extends Activity {
         favoritesList = preId.concat(subId);
         SharedPreferences.Editor ed = sp.edit();
         ed.putString(getString(R.string.user_favorites), favoritesList);
+        ed.commit();
     }
 
     public void modFavorite()
