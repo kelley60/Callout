@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,57 +20,71 @@ import static android.app.PendingIntent.getActivity;
  */
 public class StudentActivity extends Activity{
 
+    public static final String TAG = StudentActivity.class.getSimpleName();
     private Button mClubListButton;
     private Button mCalendarButton;
     private Button mPersonalDetailsButton;
     private Button mFavoritesButton;
-    private boolean isFirstVisit;
+    private boolean previouslyStarted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_home);
 
-        mClubListButton = (Button) findViewById(R.id.studentHomeClubListButtonId);
-        mCalendarButton = (Button) findViewById(R.id.studentHomeCalendarButtonId);
-        mPersonalDetailsButton = (Button) findViewById(R.id.studentHomePersonalDetailsButtonId);
-        mFavoritesButton = (Button) findViewById(R.id.studentHomeFavoritesButtonId);
+        previouslyStarted = checkPreviouslyStarted();
 
-        mClubListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent userIntent;
-                userIntent = new Intent("ClubMasterList");
-                startActivity(userIntent);
-            }
-        });
+        if (previouslyStarted == false) {
+            Log.v(TAG, "Should only be here on first visit");
+            Intent userIntent;
+            userIntent = new Intent("PersonalDetails");
+            startActivity(userIntent);
+            //First visit to app as student, go to preferences page
+        }
 
-        mCalendarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent userIntent;
-                userIntent = new Intent("Calendar");
-                startActivity(userIntent);
-            }
-        });
+        //otherwise view menu normally
+        else {
+            mClubListButton = (Button) findViewById(R.id.studentHomeClubListButtonId);
+            mCalendarButton = (Button) findViewById(R.id.studentHomeCalendarButtonId);
+            mPersonalDetailsButton = (Button) findViewById(R.id.studentHomePersonalDetailsButtonId);
+            mFavoritesButton = (Button) findViewById(R.id.studentHomeFavoritesButtonId);
 
-        mPersonalDetailsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent userIntent;
-                userIntent = new Intent("PersonalDetails");
-                startActivity(userIntent);
-            }
-        });
+            mClubListButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent userIntent;
+                    userIntent = new Intent("ClubMasterList");
+                    startActivity(userIntent);
+                }
+            });
 
-        mFavoritesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent userIntent;
-                userIntent = new Intent("Favorites");
-                startActivity(userIntent);
-            }
-        });
+            mCalendarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent userIntent;
+                    userIntent = new Intent("Calendar");
+                    startActivity(userIntent);
+                }
+            });
+
+            mPersonalDetailsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent userIntent;
+                    userIntent = new Intent("PersonalDetails");
+                    startActivity(userIntent);
+                }
+            });
+
+            mFavoritesButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent userIntent;
+                    userIntent = new Intent("Favorites");
+                    startActivity(userIntent);
+                }
+            });
+        }
     }
 
     @Override
@@ -117,6 +132,24 @@ public class StudentActivity extends Activity{
         startActivity(i);
 
         return false;
+    }
+
+    public boolean checkPreviouslyStarted(){
+        Context context = StudentActivity.this;
+        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        String visitedBefore = sp.getString(getString(R.string.pref_previously_started), "FALSE");
+        if (visitedBefore.equals("TRUE")){
+            //set to pref to true
+            Log.v(TAG, "var name is  " + visitedBefore);
+            return true;
+        }
+        else{
+            SharedPreferences.Editor ed = sp.edit();
+            ed.putString(getString(R.string.pref_previously_started), "TRUE");
+            ed.commit();
+            Log.v(TAG, "var name is  " + visitedBefore);
+            return false;
+        }
     }
 
 }

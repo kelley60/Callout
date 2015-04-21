@@ -25,6 +25,7 @@
     <string name="title_activity_club_club_view">ClubClubView</string>
 
     <!--For user details-->
+    <string name="pref_previously_started">False</string>
     <string name="callout_file_key">calloutfilez</string>
     <string name="user_favorites">userfavorites</string>
 </resources>
