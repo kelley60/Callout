@@ -2,25 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
    <group android:checkableBehavior="single">
     <item android:id="@+id/action_filter_sports"
-        android:title="Sports"
+        android:title="@string/filter_sports"
         android:orderInCategory="1"
         android:showAsAction="never" />
     <item android:id="@+id/action_filter_hobby"
-        android:title="Hobby"
+        android:title="@string/filter_hobby"
         android:orderInCategory="2"
         android:showAsAction="never" />
     <item android:id="@+id/action_filter_academic"
-        android:title="Academic"
+        android:title="@string/filter_academic"
         android:orderInCategory="3"
         android:showAsAction="never" />
     <item android:id="@+id/action_filter_other"
-        android:title="Other"
+        android:title="@string/filter_other"
         android:orderInCategory="4"
         android:showAsAction="never" />
-       <item android:id="@+id/action_filter_all"
-           android:title="All"
-           android:orderInCategory="5"
-           android:showAsAction="never" />
 
 
    </group>

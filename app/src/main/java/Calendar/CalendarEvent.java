@@ -34,7 +34,7 @@ public class CalendarEvent {
     }
 
     /**
-     * This function is called from {@link calendar.CalendarActivity}, and is used as the text
+     * This function is called from {@link CalendarActivity}, and is used as the text
      * for the list view inside of {@link calendar.CalendarArrayAdapter}
      *
      * @return a String containing the club title and description

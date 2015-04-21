@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * The data for events will be taken from the database once that is set up.
  *
  * @author Will Enright
- * @see calendar.CalendarActivity
+ * @see CalendarActivity
  */
 public class Calendar {
     private java.util.Calendar calendar;

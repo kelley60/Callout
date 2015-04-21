@@ -59,7 +59,8 @@ public class ClubMasterList extends Activity {
      * Note that this does not update the ListView displaying the clubs
      */
     public void resetClubList() {
-        clubList = new ArrayList<Club>(masterClubList);
+        clubList.clear();
+        clubList.addAll(masterClubList);
     }
 
     /**
@@ -91,146 +92,41 @@ public class ClubMasterList extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        switch (item.getItemId()){
+        resetClubList();
+
+        String category = null;
+
+        switch (id){
             case R.id.action_filter_sports:
-                if (item.isChecked()){
-                    item.setChecked(false);
-                    return true;
-                }
-                else{
-                    item.setChecked(true);}
-                if(item.isChecked()){
-                    int max = clubList.size();
-                    for (int i = 0; i <= clubList.size(); i++) {
-                        if (clubList.get(i).cat.indexOf("Sports") == -1) {
-                            //clubList.get(i).hide();
-                            clubList.remove(clubList.get(i));
-                            i=i-1;
-                            //
-                        }
-                        /*else{
-                            clubList.get(i).show();
-                        }*/
+                category = "Sports";
+                break;
 
-                        // }
-                        //filter the list
-                        updateClubList();
-                    }
-                }
-                return true;
             case R.id.action_filter_hobby:
-                if (item.isChecked()){
-                    item.setChecked(false);
-                    clubList.clear();
-                    HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php", clubList, this);
-                    return true;
-                }
-                else{
-                    item.setChecked(true);}
-                    if(item.isChecked()){
-                    int max = clubList.size();
-                    for (int i = 0; i <= clubList.size(); i++) {
-                        if (clubList.get(i).cat.indexOf("Hobby") == -1) {
-                            //clubList.get(i).hide();
-                            clubList.remove(clubList.get(i));
-                            i=i-1;
-                            //
-                        }
-                        /*else{
-                            clubList.get(i).show();
-                        }*/
+                category = "Hobby";
+                break;
 
-                        // }
-                        //filter the list
-                        updateClubList();
-                    }
-                }
-                return true;
             case R.id.action_filter_academic:
-                if (item.isChecked()){
-                    item.setChecked(false);
-                    //clubList.clear();
-                    //HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php", clubList, this);
-                    return true;
-                }
-                else{
-                    item.setChecked(true);}
-                if(item.isChecked()){
-                    int max = clubList.size();
-                    for (int i = 0; i <= clubList.size(); i++) {
-                        if (clubList.get(i).cat.indexOf("Academic") == -1) {
-                            //clubList.get(i).hide();
-                            clubList.remove(clubList.get(i));
-                            i=i-1;
-                            //
-                        }
-                        /*else{
-                            clubList.get(i).show();
-                        }*/
-                        // }
-                        //filter the list
-                        updateClubList();
-                    }
-                }
-                return true;
+                category = "Academic";
+                break;
+
             case R.id.action_filter_other:
-                if (item.isChecked()){
-                    item.setChecked(false);
-                    return true;
-                }
-                else{
-                    item.setChecked(true);}
-                if(item.isChecked()){
-                    int max = clubList.size();
-                    for (int i = 0; i <= clubList.size(); i++) {
-                        if (clubList.get(i).cat.indexOf("Other") == -1) {
-                            //clubList.get(i).hide();
-                            clubList.remove(clubList.get(i));
-                            i=i-1;
-                            //
-                        }
-                        /*else{
-                            clubList.get(i).show();
-                        }*/
+                category = "Other";
+                break;
 
-                        // }
-                        //filter the list
-                        updateClubList();
-                    }
-                }
-                return true;
-            case R.id.action_filter_all:
-                if (item.isChecked()){
-                    item.setChecked(false);
-                    return true;
-                }
-                else{
-                    item.setChecked(true);}
-                if(item.isChecked()){
-                    clubList.clear();
-                    HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php",clubList,this);
-
-                    }
-
-                     return true;
             default:
-                return super.onOptionsItemSelected(item);
+                break;
         }
 
+        if(!item.isChecked())
+            for (int i = clubList.size() - 1; i >= 0; i--)
+                if (!clubList.get(i).cat.contains(category))
+                    clubList.remove(i);
 
-        //noinspection SimplifiableIfStatement
-        /*if (id == R.id.action_club_filter) {
-            PopupMenu filter = new PopupMenu(getApplicationContext(),findViewById(R.id.action_master_club_list));
-            MenuInflater menuInflater = filter.getMenuInflater();
-            View menuItemView = findViewById(R.id.action_club_filter); // SAME ID AS MENU ID
-            PopupMenu popupMenu = new PopupMenu(this, menuItemView);
-            popupMenu.inflate(R.menu.menu_filter);
+        item.setChecked(!item.isChecked());
 
+        updateClubList();
 
-            return true;
-        }*/
-
-        //return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
 
     public int getItemIdAtIndex (int position) {

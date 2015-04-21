@@ -89,11 +89,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StudentCalender"
-            android:label="@string/title_activity_student_calender"
-            android:parentActivityName="ui.StudentActivity" >
-        </activity>
-        <activity
             android:name="ui.ClubSignIn"
             android:label="@string/title_activity_club_sign_in"
             android:parentActivityName="ui.MyActivity" >

@@ -16,6 +16,7 @@ public class Club {
     public ArrayList<String> cat; //categories
     public String bio; //bio/description of the club
     public boolean show;
+
     public Club(String n, String b, ArrayList<String> categories)
     {
         name = n;
