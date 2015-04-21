@@ -23,6 +23,7 @@ public class StudentActivity extends Activity{
     private Button mCalendarButton;
     private Button mPersonalDetailsButton;
     private Button mFavoritesButton;
+    private boolean isFirstVisit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

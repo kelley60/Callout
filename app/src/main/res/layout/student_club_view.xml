@@ -45,7 +45,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="300px"
         android:layout_height="100px"
-        android:background="#CC5500"
+        android:background="@android:color/holo_blue_light"
         android:text="Favorite"
         android:id="@+id/joinButton"
         android:layout_alignParentTop="true"

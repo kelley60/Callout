@@ -19,6 +19,7 @@ import ui.StudentActivity;
 
 public class ClubPage extends Activity {
     private Button joinButton;
+    private boolean isFavorited;
 
     String club_name;
     @Override
@@ -38,9 +39,27 @@ public class ClubPage extends Activity {
         t = (TextView) findViewById(R.id.clubBio);
         t.setText(club_bio);
 
+        isFavorited = isFavorited();
+
+        if (isFavorited == true){
+            joinButton.setBackgroundColor(0xffff0000);
+        }
+        else{
+            joinButton.setBackgroundColor(0xff33b5e5);
+        }
+
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isFavorited == false){
+                    joinButton.setBackgroundColor(0xffff0000);
+                    isFavorited = true;
+                    }
+                else {
+                    joinButton.setBackgroundColor(0xff33b5e5);
+                    isFavorited = false;
+                   }
+
                     modFavorite();
             }
         });
@@ -74,10 +93,7 @@ public class ClubPage extends Activity {
     public void modFavorite()
     {
         //check to see if a club is already favorited. if it is, call removeFavorite. If not, call addFavorite
-        Context context = ClubPage.this;
-        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
-        String favoritesList = sp.getString(getString(R.string.user_favorites), "");
-        if(favoritesList.contains(club_name))
+        if(isFavorited == true)
         {
             removeFavorite();
         }
@@ -86,6 +102,19 @@ public class ClubPage extends Activity {
             addFavorite();
         }
     }
+
+    public boolean isFavorited() {
+        Context context = ClubPage.this;
+        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        String favoritesList = sp.getString(getString(R.string.user_favorites), "");
+        if(favoritesList.contains(club_name)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
