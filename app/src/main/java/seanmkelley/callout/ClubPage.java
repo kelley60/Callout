@@ -19,7 +19,7 @@ import ui.StudentActivity;
 
 public class ClubPage extends Activity {
     private Button joinButton;
-    private boolean isFavorited;
+
 
     String club_name;
     @Override
@@ -39,9 +39,9 @@ public class ClubPage extends Activity {
         t = (TextView) findViewById(R.id.clubBio);
         t.setText(club_bio);
 
-        isFavorited = isFavorited();
 
-        if (isFavorited == true){
+
+        if (isFavorited() == true){
             joinButton.setBackgroundColor(0xffff0000);
         }
         else{
@@ -51,13 +51,13 @@ public class ClubPage extends Activity {
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isFavorited == false){
+                if (isFavorited() == false){
                     joinButton.setBackgroundColor(0xffff0000);
-                    isFavorited = true;
+
                     }
                 else {
                     joinButton.setBackgroundColor(0xff33b5e5);
-                    isFavorited = false;
+
                    }
 
                     modFavorite();
@@ -93,7 +93,7 @@ public class ClubPage extends Activity {
     public void modFavorite()
     {
         //check to see if a club is already favorited. if it is, call removeFavorite. If not, call addFavorite
-        if(isFavorited == true)
+        if(isFavorited() == true)
         {
             removeFavorite();
         }
