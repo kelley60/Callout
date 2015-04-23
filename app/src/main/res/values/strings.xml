@@ -28,6 +28,7 @@
     <string name="pref_previously_started">False</string>
     <string name="callout_file_key">calloutfilez</string>
     <string name="user_favorites">userfavorites</string>
+    <string name="user_preferences">userpreferences</string>
     <string name="filter_by_category">Filter by Category</string>
     <string name="filter_other">Other</string>
     <string name="filter_academic">Academic</string>
