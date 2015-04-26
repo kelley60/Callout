@@ -11,16 +11,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+
+import calendar.Calendar;
+import calendar.CalendarEvent;
+
 /**
  * Created by William on 4/8/2015
  */
 public class HTTPGet {
-    public static void getClubList(String url, final List<Club> list, final ClubMasterList cml) {
+    public static void getClubList(final List<Club> list, final ClubMasterList cml) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url(url)
+                .url("http://web.ics.purdue.edu/~awirth/db_clubs.php")
                 .build();
 
         Call call = client.newCall(request);
@@ -78,6 +83,50 @@ public class HTTPGet {
                 // and parsing the clubs from the database
                 cml.setMasterClubList();
                 cml.updateClubList();
+            }
+        });
+    }
+
+    /**
+     * Retrieve events from the databse and enter them into the calendar
+     * @param calendar The calendar that the events will be added to
+     */
+    public static void getCalendarEvents(final Calendar calendar) {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("http://web.ics.purdue.edu/~awirth/db_calendar.php")
+                .build();
+
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    if (response.isSuccessful()) {
+                        JSONArray jsonArray = new JSONObject(jsonData).getJSONArray("events");
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject obj = jsonArray.getJSONObject(i);
+                            calendar.addEvent(
+                                    obj.optInt("Year"),
+                                    obj.optInt("Month"),
+                                    obj.optInt("Day"),
+                                    obj.optInt("Hour"),
+                                    obj.optInt("Minute"),
+                                    obj.optString("Title"),
+                                    obj.optString("Description"));
+                        }
+                    }
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
