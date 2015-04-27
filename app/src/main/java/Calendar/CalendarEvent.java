@@ -11,6 +11,17 @@ public class CalendarEvent {
     private int year, month, day, hour, minute;
     private String title, description;
 
+    /**
+     * Creates a new event
+     *
+     * @param year The year that this event will occur on
+     * @param month The month that this event will occur on
+     * @param day The day that this event will occur on
+     * @param hour The hour that this event will occur on
+     * @param minute The minute that this event will occur on
+     * @param title A title for this event
+     * @param description A description for this event
+     */
     public CalendarEvent(int year, int month, int day, int hour, int minute, String title, String description) {
         this.year = year;
         this.month = month;

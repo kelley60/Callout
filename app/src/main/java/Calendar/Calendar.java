@@ -14,17 +14,42 @@ public class Calendar {
     private java.util.Calendar calendar;
     private ArrayList<CalendarEvent> events;
 
+    /**
+     * Instantiate a new calendar with no events
+     */
     public Calendar() {
         this.calendar = java.util.Calendar.getInstance();
         this.events = new ArrayList<CalendarEvent>();
     }
 
+    /**
+     * Add an event to the calendar
+     * This function will most likely get its parameters from a database
+     *
+     * @param year  The year that this event will occur on
+     * @param month The month that this event will occur on.  Note that this is 0 indexed
+     * @param day   The day that this event will occur on
+     * @param hour  The hour that this event will occur on
+     * @param minute The minute that this event will occur on
+     * @param title A title for this event
+     * @param description A description for this event
+     */
     public void addEvent(int year, int month, int day, int hour, int minute, String title, String description) {
         events.add(new CalendarEvent(year, month, day, hour, minute, title, description));
     }
 
+    /**
+     * @return All of the current events on the calendar
+     */
     public ArrayList<CalendarEvent> getEvents() {
         return events;
+    }
+
+    /**
+     * @return The number of events this calendar has
+     */
+    public int getNumberOfEvents () {
+        return events.size();
     }
 
     /**

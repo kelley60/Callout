@@ -1,14 +1,19 @@
 package calendar;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,30 +21,33 @@ import java.util.List;
 import calendar.Calendar;
 import calendar.CalendarArrayAdapter;
 import calendar.CalendarEvent;
+import seanmkelley.callout.HTTPGet;
 import seanmkelley.callout.R;
 
 
 public class CalendarActivity extends Activity {
+    private CalendarArrayAdapter calendarArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_calendar);
-        //Intent intent = getIntent();
 
         //Create calendar and import all events from database
         final Calendar calendar = new Calendar();
 
         // TODO request all events from db then parse and fill the calendar
+        HTTPGet.getCalendarEvents(calendar, this);
 
         // These will be hardcoded for testing purposes
         // Month starts on 0, so April is actually 3.  day/year do not
-        calendar.addEvent(2015, 3, 2, 13, 30, "Something Club", "Do stuff");
-        calendar.addEvent(2015, 3, 2, 13, 30, "Some other Club", "Do other stuff");
-        calendar.addEvent(2015, 3, 3, 13, 30, "Some third Club", "Do more things");
+        //calendar.addEvent(2015, 3, 2, 13, 30, "Something Club", "Do stuff");
 
         // Save the context so that we can set list view on item click later
         final Context context = this;
+
+        calendarArrayAdapter = new CalendarArrayAdapter(context, R.layout.list_item, null);
 
         // TODO Fill events list once for the current day, as it does not call the method below
 
@@ -54,7 +62,8 @@ public class CalendarActivity extends Activity {
                 ListView lv = (ListView) findViewById(R.id.listViewCalendar);
 
                 // Use the list_item layout to display the events
-                lv.setAdapter(new CalendarArrayAdapter(context, R.layout.list_item, events));
+                calendarArrayAdapter = new CalendarArrayAdapter(context, R.layout.list_item, events);
+                lv.setAdapter(calendarArrayAdapter);
 
                 // Choose what to do when an item is clicked on
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -88,5 +97,19 @@ public class CalendarActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * This updates the array adapter, letting it know that the data it displays has changed
+     * It will be called from {@link HTTPGet} once it has finished downloading all of the
+     *  events from the cal table
+     */
+    public void updateEventList() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                calendarArrayAdapter.notifyDataSetChanged();
+            }
+        });
     }
 }

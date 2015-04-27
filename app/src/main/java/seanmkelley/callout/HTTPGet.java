@@ -16,13 +16,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 import calendar.Calendar;
+import calendar.CalendarActivity;
 import calendar.CalendarEvent;
 
 /**
  * Created by William on 4/8/2015
  */
 public class HTTPGet {
-    public static void getClubList(final List<Club> list, final ClubMasterList cml) {
+    public static void getClubList(final List<Club> list, final ClubMasterList clubMasterList) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("http://web.ics.purdue.edu/~awirth/db_clubs.php")
@@ -81,8 +82,8 @@ public class HTTPGet {
 
                 // Let the master list know that we have finished downloading
                 // and parsing the clubs from the database
-                cml.setMasterClubList();
-                cml.updateClubList();
+                clubMasterList.setMasterClubList();
+                clubMasterList.updateClubList();
             }
         });
     }
@@ -91,10 +92,10 @@ public class HTTPGet {
      * Retrieve events from the databse and enter them into the calendar
      * @param calendar The calendar that the events will be added to
      */
-    public static void getCalendarEvents(final Calendar calendar) {
+    public static void getCalendarEvents(final Calendar calendar, final CalendarActivity calendarActivity) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("http://web.ics.purdue.edu/~awirth/db_calendar.php")
+                .url("http://web.ics.purdue.edu/~awirth/db_cal.php")
                 .build();
 
         Call call = client.newCall(request);
@@ -108,25 +109,30 @@ public class HTTPGet {
             public void onResponse(Response response) throws IOException {
                 try {
                     String jsonData = response.body().string();
+                    System.out.println("JSON data: " + jsonData);
                     if (response.isSuccessful()) {
-                        JSONArray jsonArray = new JSONObject(jsonData).getJSONArray("events");
+                        JSONArray jsonArray = new JSONObject(jsonData).getJSONArray("cal");
 
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject obj = jsonArray.getJSONObject(i);
                             calendar.addEvent(
-                                    obj.optInt("Year"),
-                                    obj.optInt("Month"),
-                                    obj.optInt("Day"),
-                                    obj.optInt("Hour"),
-                                    obj.optInt("Minute"),
-                                    obj.optString("Title"),
-                                    obj.optString("Description"));
+                                    obj.optInt("year"),
+                                    obj.optInt("month"),
+                                    obj.optInt("day"),
+                                    obj.optInt("hour"),
+                                    obj.optInt("minute"),
+                                    obj.optString("title"),
+                                    obj.optString("description"));
+
+                            System.out.println("Adding event with description: " + obj.optString("Description"));
                         }
                     }
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+                calendarActivity.updateEventList();
             }
         });
     }
