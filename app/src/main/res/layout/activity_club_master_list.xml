@@ -13,6 +13,16 @@
         android:id="@+id/masterClubListView"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="100dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/masterListBackButtonId"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
 </RelativeLayout>

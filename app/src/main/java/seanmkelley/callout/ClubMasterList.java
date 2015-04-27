@@ -8,7 +8,8 @@ import android.view.Menu;
     import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
+    import android.widget.Button;
+    import android.widget.ListView;
     import android.widget.PopupMenu;
 
     import java.util.ArrayList;
@@ -19,11 +20,19 @@ public class ClubMasterList extends Activity {
     private List<Club> clubList;
     private ClubArrayAdapter adapter;
 
-
+    private Button mBackButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_master_list);
+
+        mBackButton = (Button) findViewById(R.id.masterListBackButtonId);
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         clubList = new ArrayList<Club>();
 

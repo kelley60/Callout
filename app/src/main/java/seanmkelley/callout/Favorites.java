@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,12 +23,23 @@ public class Favorites extends Activity{
     private ArrayList<Club> masterClubList;
     private ArrayList<Club> favoritesList;
     private ClubArrayAdapter adapter;
+    private Button mBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_favorites);
         favoritesList = new ArrayList<Club>();
+
+        mBackButton = (Button) findViewById(R.id.favoritesBackButtonId);
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         ListView lv = (ListView) findViewById(R.id.listView2);
         adapter = new ClubArrayAdapter(this, R.layout.list_item, favoritesList);

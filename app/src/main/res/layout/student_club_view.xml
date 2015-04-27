@@ -20,9 +20,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Upcoming Events:"
         android:id="@+id/eventTitle"
-        android:layout_below="@+id/clubBio"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView" />
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
 
 
@@ -30,9 +30,9 @@
         android:layout_width="wrap_content"
         android:layout_height="280px"
         android:id="@+id/eventList"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentRight="true" />
+        android:layout_below="@+id/eventTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <ImageView
         android:layout_width="760px"
@@ -64,4 +64,13 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="90px"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/studentClubViewBackButtonId"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 </RelativeLayout>

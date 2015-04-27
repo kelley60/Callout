@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 
@@ -18,6 +19,7 @@ public class PersonalDetails extends Activity {
     private CheckBox mAcademicBox;
     private CheckBox mHobbyBox;
     private CheckBox mOtherBox;
+    private Button mBackButton;
     public static final String TAG = PersonalDetails.class.getSimpleName();
 
 
@@ -30,6 +32,7 @@ public class PersonalDetails extends Activity {
         mAcademicBox = (CheckBox) findViewById(R.id.personalDetailsAcademicCheckId);
         mHobbyBox = (CheckBox) findViewById(R.id.personalDetailsHobbyId);
         mOtherBox = (CheckBox) findViewById(R.id.personalDetailsOtherCheckId);
+        mBackButton = (Button) findViewById(R.id.personDetailsBackButtonId);
 
         /*
         mAcademicBox.setChecked(true);
@@ -39,6 +42,13 @@ public class PersonalDetails extends Activity {
         */
         //checks previous state of boxes and sets them
         loadPersonalDetails();
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mSportsBox.setOnClickListener(new View.OnClickListener() {
             @Override

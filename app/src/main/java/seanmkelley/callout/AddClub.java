@@ -1,30 +1,28 @@
-package ui;
+package seanmkelley.callout;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import seanmkelley.callout.R;
+import java.io.IOException;
 
 
-public class ClubSignIn extends Activity {
+public class AddClub extends Activity {
 
-
-    private Button mGoButton;
+    public static final String TAG = AddClub.class.getSimpleName();
     private Button mBackButton;
-    private boolean isValidLogin;
+    private Button mMakeClubButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.club_sign_in);
-        mGoButton = (Button) findViewById(R.id.clubSignInButtonId);
-        mBackButton = (Button) findViewById(R.id.clubSignInBackButtonId);
-        //should initially be false, changed to true if valid user
-        isValidLogin = true;
+        setContentView(R.layout.club_add);
+        mBackButton = (Button) findViewById(R.id.clubAddBackButtonId);
+        mMakeClubButton = (Button) findViewById(R.id.addClubButtonId);
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,15 +31,15 @@ public class ClubSignIn extends Activity {
             }
         });
 
-        mGoButton.setOnClickListener(new View.OnClickListener() {
+        mMakeClubButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent userIntent;
-
-                    if (isValidLogin) {
-                        userIntent = new Intent(ClubSignIn.this, ClubActivity.class);
-                        startActivity(userIntent);
-                    }
+            public void onClick(View v){
+                try {
+                    makeClub();
+                }
+                catch (IOException e) {
+                    Log.e(TAG, "Exception caught : ", e);
+                }
             }
         });
     }
@@ -50,7 +48,7 @@ public class ClubSignIn extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_club_sign_in, menu);
+        getMenuInflater().inflate(R.menu.menu_add_club, menu);
         return true;
     }
 
@@ -67,5 +65,12 @@ public class ClubSignIn extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void makeClub() throws IOException {
+        HTTPPost example = new HTTPPost();
+        String json = example.sendClub("PSP Honors Frat", "Must have a 3.0 GPA to join",
+                "Academic","","","");
+        String response = example.post("http://www.roundsapp.com/post", json);
     }
 }

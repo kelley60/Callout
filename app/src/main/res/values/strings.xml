@@ -34,4 +34,5 @@
     <string name="filter_academic">Academic</string>
     <string name="filter_hobby">Hobby</string>
     <string name="filter_sports">Sports</string>
+    <string name="title_activity_add_club">AddClub</string>
 </resources>

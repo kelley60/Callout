@@ -19,7 +19,7 @@ import ui.StudentActivity;
 
 public class ClubPage extends Activity {
     private Button joinButton;
-
+    private Button mBackButton;
 
     String club_name;
     @Override
@@ -27,6 +27,7 @@ public class ClubPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_club_view);
 
+        mBackButton = (Button) findViewById(R.id.studentClubViewBackButtonId);
         joinButton = (Button) findViewById(R.id.joinButton);
 
         //receives intent from ClubMasterList
@@ -39,6 +40,12 @@ public class ClubPage extends Activity {
         t = (TextView) findViewById(R.id.clubBio);
         t.setText(club_bio);
 
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         if (isFavorited() == true){

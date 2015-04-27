@@ -26,13 +26,20 @@ public class StudentActivity extends Activity{
     private Button mPersonalDetailsButton;
     private Button mFavoritesButton;
     private boolean previouslyStarted;
-
+    private Button mBackButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_home);
-
+        mBackButton = (Button) findViewById(R.id.studentHomeBackButtonId);
         previouslyStarted = checkPreviouslyStarted();
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         if (previouslyStarted == false) {
             Log.v(TAG, "Should only be here on first visit");
