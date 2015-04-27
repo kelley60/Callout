@@ -58,7 +58,7 @@
                 android:text="@string/add"
                 android:id="@+id/button"
                 android:clickable="true"
-                android:layout_gravity="end"/>
+                android:layout_gravity="end" />
         </LinearLayout>
     </ScrollView>
 
