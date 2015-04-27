@@ -51,7 +51,7 @@ public class ClubMasterList extends Activity {
         });
 
         // Retrieve clubList from database
-        HTTPGet.getClubList("http://web.ics.purdue.edu/~awirth/db_clubs.php", clubList, this);
+        HTTPGet.getClubList(clubList, this);
     }
 
     /**

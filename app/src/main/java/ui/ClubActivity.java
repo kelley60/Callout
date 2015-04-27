@@ -51,7 +51,7 @@ public class ClubActivity extends Activity{
             @Override
             public void onClick(View v) {
                 Intent userIntent;
-                userIntent = new Intent("Calendar");
+                userIntent = new Intent("ClubCalendar");
                 startActivity(userIntent);
             }
         });
