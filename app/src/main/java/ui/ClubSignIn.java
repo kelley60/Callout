@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import seanmkelley.callout.AddClub;
 import seanmkelley.callout.R;
 
 
@@ -16,6 +17,8 @@ public class ClubSignIn extends Activity {
 
     private Button mGoButton;
     private Button mBackButton;
+    private Button mAddClubButton;
+
     private boolean isValidLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +26,18 @@ public class ClubSignIn extends Activity {
         setContentView(R.layout.club_sign_in);
         mGoButton = (Button) findViewById(R.id.clubSignInButtonId);
         mBackButton = (Button) findViewById(R.id.clubSignInBackButtonId);
+        mAddClubButton = (Button) findViewById(R.id.clubSignInAddClubButtonId);
         //should initially be false, changed to true if valid user
         isValidLogin = true;
+
+        mAddClubButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userIntent;
+                userIntent = new Intent(ClubSignIn.this, AddClub.class);
+                startActivity(userIntent);
+            }
+        });
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

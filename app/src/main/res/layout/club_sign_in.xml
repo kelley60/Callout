@@ -69,4 +69,19 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Club"
+        android:id="@+id/clubSignInAddClubButtonId"
+        android:layout_below="@+id/clubHomeClubDetailsButtonId"
+        android:background="#FFFFFFFF"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/clubSignInHeaderId"
+        android:layout_toEndOf="@+id/clubSignInHeaderId"/>
+
 </RelativeLayout>
