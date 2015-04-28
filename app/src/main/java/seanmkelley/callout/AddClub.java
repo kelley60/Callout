@@ -22,7 +22,6 @@ public class AddClub extends Activity {
     private CheckBox mAcademicBox;
     private CheckBox mHobbyBox;
     private CheckBox mOtherBox;
-
     private EditText mClubNameText;
     private EditText mClubBioText;
 
@@ -101,6 +100,7 @@ public class AddClub extends Activity {
             isOther = "Other";
 
         Log.v(TAG, "" + clubName + " " + clubBio);
+
 
         String json = example.sendClub(clubName, clubBio,isSport,isAcademic,isHobby,isOther);
         example.post("http://www.roundsapp.com/post", json);
