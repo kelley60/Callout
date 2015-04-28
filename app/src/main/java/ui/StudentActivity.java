@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import calendar.CalendarActivity;
 import seanmkelley.callout.*;
 
 import static android.app.PendingIntent.getActivity;
@@ -71,7 +72,7 @@ public class StudentActivity extends Activity{
                 @Override
                 public void onClick(View v) {
                     Intent userIntent;
-                    userIntent = new Intent("Calendar");
+                    userIntent = new Intent(StudentActivity.this, CalendarActivity.class);
                     startActivity(userIntent);
                 }
             });
