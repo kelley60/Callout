@@ -1,5 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" tools:context="calendar.CalendarActivity">
+    xmlns:tools="http://schemas.android.com/tools" tools:context="Calendar.CalendarActivity">
     <item android:id="@+id/action_settings" android:title="@string/add_event"
         android:orderInCategory="100" android:showAsAction="never" />
 </menu>

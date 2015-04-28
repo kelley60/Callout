@@ -17,9 +17,9 @@
         android:title="@string/filter_other"
         android:orderInCategory="4"
         android:showAsAction="never" />
-
-
+       <item android:id="@+id/action_filter_all"
+        android:title="@string/all"
+        android:orderInCategory="4"
+        android:showAsAction="never" />
    </group>
-
-
 </menu>

@@ -29,19 +29,10 @@ public class CalendarActivity extends Activity {
 
         setContentView(R.layout.activity_calendar);
 
-        mBackButton = (Button) findViewById(R.id.calendarBackButtonId);
-        mBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-
         //Create calendar and import all events from database
         final Calendar calendar = new Calendar();
 
-        // TODO request all events from db then parse and fill the calendar
+        // Request all events from db then parse and fill the calendar
         HTTPGet.getCalendarEvents(calendar, this);
 
         // These will be hardcoded for testing purposes
@@ -84,7 +75,8 @@ public class CalendarActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_calendar, menu);
+        if (getIntent().hasExtra("fromClub"))
+            getMenuInflater().inflate(R.menu.menu_calendar, menu);
         return true;
     }
 
@@ -97,9 +89,7 @@ public class CalendarActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent i = new Intent("AddCalendarEvent");
-            i.putExtra("fromClub", true);
-            startActivity(i);
+            startActivity(new Intent("AddCalendarEvent"));
             return true;
         }
 

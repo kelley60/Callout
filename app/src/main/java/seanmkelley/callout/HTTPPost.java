@@ -71,19 +71,13 @@ public class HTTPPost {
         return q.toString();
     }
 
-    public static String generateCalendarQuery (String title, String description, int year, int month, int day, int hour, int minute) {
+    public static String generateCalendarQuery (String title, int month, int day, int year, int hour, int minute, String description, String clubName) {
         StringBuilder q = new StringBuilder();
 
-        q.append("http://web.ics.purdue.edu/~awirth/db_clubs_send.php?");
+        q.append("http://web.ics.purdue.edu/~awirth/db_cal_send.php?");
 
         q.append("title=");
         q.append(title.replace(' ', '+'));
-
-        q.append("&description=");
-        q.append(description.replace(' ', '+'));
-
-        q.append("&year=");
-        q.append(year);
 
         q.append("&month=");
         q.append(month);
@@ -91,11 +85,20 @@ public class HTTPPost {
         q.append("&day=");
         q.append(day);
 
+        q.append("&year=");
+        q.append(year);
+
         q.append("&hour=");
         q.append(hour);
 
         q.append("&minute=");
         q.append(minute);
+
+        q.append("&description=");
+        q.append(description.replace(' ', '+'));
+
+        q.append("&club=");
+        q.append(clubName.replace(' ', '+'));
 
         return q.toString();
     }
