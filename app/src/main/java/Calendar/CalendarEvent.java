@@ -45,12 +45,20 @@ public class CalendarEvent {
     }
 
     /**
-     * This function is called from {@link CalendarActivity}, and is used as the text
-     * for the list view inside of {@link calendar.CalendarArrayAdapter}
+     * Called from {@link CalendarArrayAdapter}, used to display the title
      *
-     * @return a String containing the club title and description
+     * @return The title of this event
      */
-    public String toString() {
-        return title + "\t" + hour + ":" + minute + "\n" + description;
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Called from {@link CalendarArrayAdapter}, used to display the description
+     *
+     * @return The description of this event
+     */
+    public String getDescription() {
+        return description;
     }
 }
