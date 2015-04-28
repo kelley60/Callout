@@ -40,6 +40,7 @@
     <string name="title_activity_add_club">Add Club</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="clubField">Club putting on the event</string>
     <string name="add_event">Add an event</string>
     <string name="club_image">ClubImage</string>
     <string name="all">All</string>

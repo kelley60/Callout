@@ -20,6 +20,7 @@ public class AddCalendarEventActivity extends Activity {
 
         final EditText title = (EditText) findViewById(R.id.TitleField);
         final EditText description = (EditText) findViewById(R.id.DescField);
+        final EditText club = (EditText) findViewById(R.id.clubField);
         final DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
         final TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
 
@@ -41,8 +42,7 @@ public class AddCalendarEventActivity extends Activity {
                         timePicker.getCurrentHour(),
                         timePicker.getCurrentMinute(),
                         description.getText().toString(),
-                        "Football Fans"
-                        );
+                        club.getText().toString());
                 HTTPPost.execute(query);
 
                 // Add it directly to local calendar, or update from database?

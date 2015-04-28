@@ -93,13 +93,11 @@ public class HTTPPost {
 
         q.append("&minute=");
         q.append(minute);
-
         q.append("&description=");
         q.append(description.replace(' ', '+'));
 
         q.append("&club=");
         q.append(clubName.replace(' ', '+'));
-
         return q.toString();
     }
 }

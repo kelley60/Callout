@@ -120,7 +120,8 @@ public class HTTPGet {
                                     obj.optInt("hour"),
                                     obj.optInt("minute"),
                                     obj.optString("title"),
-                                    obj.optString("description"));
+                                    obj.optString("description"),
+                                    obj.optString("club"));
                         }
                     }
                 }

@@ -34,8 +34,8 @@ public class Calendar {
      * @param title A title for this event
      * @param description A description for this event
      */
-    public void addEvent(int year, int month, int day, int hour, int minute, String title, String description) {
-        events.add(new CalendarEvent(year, month, day, hour, minute, title, description));
+    public void addEvent(int year, int month, int day, int hour, int minute, String title, String description,String club) {
+        events.add(new CalendarEvent(year, month, day, hour, minute, title, description,club));
     }
 
     /**

@@ -9,7 +9,7 @@ package calendar;
  */
 public class CalendarEvent {
     private int year, month, day, hour, minute;
-    private String title, description;
+    private String title, description,club;
 
     /**
      * Creates a new event
@@ -22,7 +22,7 @@ public class CalendarEvent {
      * @param title A title for this event
      * @param description A description for this event
      */
-    public CalendarEvent(int year, int month, int day, int hour, int minute, String title, String description) {
+    public CalendarEvent(int year, int month, int day, int hour, int minute, String title, String description, String club) {
         this.year = year;
         this.month = month;
         this.day = day;
@@ -30,6 +30,7 @@ public class CalendarEvent {
         this.minute = minute;
         this.title = title;
         this.description = description;
+        this.club = club;
     }
 
     /**

@@ -29,6 +29,15 @@ public class CalendarActivity extends Activity {
 
         setContentView(R.layout.activity_calendar);
 
+        /*mBackButton = (Button) findViewById(R.id.calendarBackButtonId);
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });*/
+
+
         //Create calendar and import all events from database
         final Calendar calendar = new Calendar();
 
