@@ -41,7 +41,7 @@ public class CalendarActivity extends Activity {
         //Create calendar and import all events from database
 
         // Request all events from db then parse and fill the calendar
-        HTTPGet.getCalendarEvents(calendar, this);
+        //HTTPGet.getCalendarEvents(calendar, this);
 
         // These will be hardcoded for testing purposes
         // Month starts on 0, so April is actually 3.  day/year do not
@@ -55,19 +55,23 @@ public class CalendarActivity extends Activity {
         // TODO Fill events list once for the current day, as it does not call the method below
 
         // Use the list_item layout to display the events
-        java.util.Calendar alice = java.util.Calendar.getInstance();
+        /*java.util.Calendar alice = java.util.Calendar.getInstance();
         List<CalendarEvent> events = calendar.getEventsOnDay(alice.get(alice.YEAR), alice.get(alice.MONTH), alice.get(alice.DAY_OF_MONTH));
     System.out.println(""+alice.get(alice.MONTH));
         ListView lv = (ListView) findViewById(R.id.listViewCalendar);
         calendarArrayAdapter = new CalendarArrayAdapter(context, R.layout.list_item, events);
-        lv.setAdapter(calendarArrayAdapter);
+        lv.setAdapter(calendarArrayAdapter);*/
 
 
         CalendarView cv = (CalendarView) findViewById(R.id.calendarView);
+        cv.getDate();
+
         cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
+
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 // Find all of the events on a certain day
+
                 List<CalendarEvent> events = calendar.getEventsOnDay(year, month, day);
 
                 // Setup the list view to display the club names
@@ -129,7 +133,9 @@ public class CalendarActivity extends Activity {
     @Override
     protected void onResume()
     {
+
         super.onResume();
+        calendar.clear();
         HTTPGet.getCalendarEvents(calendar, this);
 
     }

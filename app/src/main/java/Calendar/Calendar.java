@@ -68,4 +68,8 @@ public class Calendar {
 
         return result;
     }
+    public void clear()
+    {
+        events.clear();
+    }
 }
