@@ -1,8 +1,10 @@
 package seanmkelley.callout;
 
     import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+    import android.content.Context;
+    import android.content.Intent;
+    import android.content.SharedPreferences;
+    import android.os.Bundle;
 import android.view.Menu;
     import android.view.MenuInflater;
     import android.view.MenuItem;
@@ -81,7 +83,29 @@ public class ClubMasterList extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         //getMenuInflater().inflate(R.menu.menu_club_master_list, menu);
 
-        getMenuInflater().inflate(R.menu.menu_filter, menu); //experimental
+        getMenuInflater().inflate(R.menu.menu_filter, menu); //experimental //experimental
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(containsPreference("sports"))
+        {
+            onOptionsItemSelected(menu.getItem(0));
+        }
+        else if(containsPreference("hobby"))
+        {
+            onOptionsItemSelected(menu.getItem(1));
+        }
+        else if(containsPreference("academic"))
+        {
+            onOptionsItemSelected(menu.getItem(2));
+        }
+        else if(containsPreference("other"))
+        {
+            onOptionsItemSelected(menu.getItem(3));
+        }
+
         return true;
     }
 
@@ -144,4 +168,38 @@ public class ClubMasterList extends Activity {
         return clubList.get(position).getBio();
     }
 
+    public void addPreference(String p) {
+        Context context = ClubMasterList.this;
+        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        String prefList = sp.getString(getString(R.string.user_preferences), "");
+        prefList = prefList.concat(p + '\n');
+        SharedPreferences.Editor ed = sp.edit();
+        ed.putString(getString(R.string.user_preferences), prefList);
+        ed.commit();
+    }
+
+    public void removePreference(String p) {
+        Context context = ClubMasterList.this;
+        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        String prefList = sp.getString(getString(R.string.user_preferences), "");
+        int idIndex = prefList.indexOf(p);
+        String preId = prefList.substring(0, idIndex);
+        String subId = prefList.substring(idIndex + p.length() + 1);
+        prefList = preId.concat(subId);
+        SharedPreferences.Editor ed = sp.edit();
+        ed.putString(getString(R.string.user_preferences), prefList);
+        ed.commit();
+    }
+
+    public boolean containsPreference(String p) {
+        Context context = ClubMasterList.this;
+        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        String favoritesList = sp.getString(getString(R.string.user_preferences), "");
+
+        if (favoritesList.contains(p)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
