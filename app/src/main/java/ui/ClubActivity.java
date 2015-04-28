@@ -19,6 +19,7 @@ public class ClubActivity extends Activity{
     private Button mClubListButton;
     private Button mCalendarButton;
     private Button mClubDetailsButton;
+    private Button mAddClubButton;
     private Button mBackButton;
 
     @Override
@@ -29,6 +30,7 @@ public class ClubActivity extends Activity{
         mClubListButton = (Button) findViewById(R.id.clubHomeClubListButtonId);
         mCalendarButton = (Button) findViewById(R.id.clubHomeCalendarButtonId);
         mClubDetailsButton = (Button) findViewById(R.id.clubHomeClubDetailsButtonId);
+        mAddClubButton = (Button) findViewById(R.id.clubHomeAddClubButtonId);
         mBackButton = (Button) findViewById(R.id.clubHomeBackButtonId);
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +67,14 @@ public class ClubActivity extends Activity{
             }
         });
 
+        mAddClubButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userIntent;
+                userIntent = new Intent(ClubActivity.this, AddClub.class);
+                startActivity(userIntent);
+            }
+        });
     }
 
     @Override

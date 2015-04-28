@@ -89,7 +89,7 @@ public class HTTPGet {
     }
 
     /**
-     * Retrieve events from the databse and enter them into the calendar
+     * Retrieve events from the database and enter them into the calendar
      * @param calendar The calendar that the events will be added to
      */
     public static void getCalendarEvents(final Calendar calendar, final CalendarActivity calendarActivity) {
