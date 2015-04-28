@@ -69,8 +69,8 @@ public class AddClub extends Activity {
 
     public void makeClub() throws IOException {
         HTTPPost example = new HTTPPost();
-        String json = example.sendClub("PSP Honors Frat", "Must have a 3.0 GPA to join",
-                "Academic","","","");
-        example.post("http://web.ics.purdue.edu/~awirth/db_clubs_send.php", json);
+//        example.post("http://web.ics.purdue.edu/~awirth/db_clubs_send.php", example.sendClub("PSP Honors Frat", "Must have a 3.0 GPA to join", "Academic","","",""));
+        String query = example.generateQuery("PSP Honors Frat", "Must have a 3.0 GPA to join", "Academic", "", "", "");
+        example.post(query);
     }
 }
