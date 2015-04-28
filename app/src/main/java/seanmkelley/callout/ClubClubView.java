@@ -18,14 +18,14 @@ public class ClubClubView extends Activity {
         setContentView(R.layout.club_club_view);
 
         //mBackButton = (Button) findViewById(R.id.clubClubViewBackButtonId);
-
+        /*
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
+        */
     }
 
 

@@ -23,12 +23,13 @@ public class ClubMasterList extends Activity {
     private List<Club> clubList;
     private ClubArrayAdapter adapter;
 
-    private Button mBackButton;
+    //private Button mBackButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_master_list);
 
+        /*
         mBackButton = (Button) findViewById(R.id.masterListBackButtonId);
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +37,7 @@ public class ClubMasterList extends Activity {
                 finish();
             }
         });
-
+*/
         clubList = new ArrayList<Club>();
 
         ListView lv = (ListView) findViewById(R.id.masterClubListView);

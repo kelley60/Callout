@@ -34,12 +34,14 @@ public class StudentActivity extends Activity{
         //mBackButton = (Button) findViewById(R.id.studentHomeBackButtonId);
         previouslyStarted = checkPreviouslyStarted();
 
+        /*
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+        */
 
         if (previouslyStarted == false) {
             Log.v(TAG, "Should only be here on first visit");

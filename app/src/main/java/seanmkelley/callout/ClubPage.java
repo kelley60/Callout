@@ -39,14 +39,14 @@ public class ClubPage extends Activity {
         String club_bio = (String)getIntent().getExtras().get("club_bio").toString();
         t = (TextView) findViewById(R.id.clubBio);
         t.setText(club_bio);
-
+/*
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
+*/
 
         if (isFavorited() == true){
             joinButton.setBackgroundColor(0xffff0000);

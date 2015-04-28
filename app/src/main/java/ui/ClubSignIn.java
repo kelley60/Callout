@@ -16,7 +16,7 @@ public class ClubSignIn extends Activity {
 
 
     private Button mGoButton;
-    private Button mBackButton;
+    //private Button mBackButton;
     private Button mAddClubButton;
 
     private boolean isValidLogin;
@@ -39,13 +39,14 @@ public class ClubSignIn extends Activity {
             }
         });
 
+        /*
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
+        */
         mGoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

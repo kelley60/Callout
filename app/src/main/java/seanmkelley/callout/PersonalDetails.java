@@ -42,14 +42,14 @@ public class PersonalDetails extends Activity {
         */
         //checks previous state of boxes and sets them
         loadPersonalDetails();
-
+/*
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
+        */
         mSportsBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
