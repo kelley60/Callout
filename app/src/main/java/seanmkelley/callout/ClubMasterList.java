@@ -13,6 +13,7 @@ import android.widget.AdapterView;
     import android.widget.Button;
     import android.widget.ListView;
     import android.widget.PopupMenu;
+    import android.widget.RadioButton;
 
     import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +72,8 @@ public class ClubMasterList extends Activity {
      */
     public void resetClubList() {
         clubList.clear();
-        clubList.addAll(masterClubList);
+        if(masterClubList != null && !masterClubList.isEmpty())
+            clubList.addAll(masterClubList);
     }
 
     /**
@@ -88,32 +90,17 @@ public class ClubMasterList extends Activity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         //getMenuInflater().inflate(R.menu.menu_club_master_list, menu);
 
         getMenuInflater().inflate(R.menu.menu_filter, menu); //experimental //experimental
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if(containsPreference("sports"))
-        {
-            onOptionsItemSelected(menu.getItem(0));
-        }
-        else if(containsPreference("hobby"))
-        {
-            onOptionsItemSelected(menu.getItem(1));
-        }
-        else if(containsPreference("academic"))
-        {
-            onOptionsItemSelected(menu.getItem(2));
-        }
-        else if(containsPreference("other"))
-        {
-            onOptionsItemSelected(menu.getItem(3));
-        }
 
         return true;
     }
@@ -127,7 +114,7 @@ public class ClubMasterList extends Activity {
 
         resetClubList();
 
-        String category = null;
+        String category;
 
         switch (id){
             case R.id.action_filter_sports:
@@ -147,7 +134,9 @@ public class ClubMasterList extends Activity {
                 break;
 
             default:
-                break;
+                // For 'All'
+                updateClubList();
+                return super.onOptionsItemSelected(item);
         }
 
         if(!item.isChecked())
