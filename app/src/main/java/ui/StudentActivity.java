@@ -31,7 +31,7 @@ public class StudentActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_home);
-        mBackButton = (Button) findViewById(R.id.studentHomeBackButtonId);
+        //mBackButton = (Button) findViewById(R.id.studentHomeBackButtonId);
         previouslyStarted = checkPreviouslyStarted();
 
         mBackButton.setOnClickListener(new View.OnClickListener() {

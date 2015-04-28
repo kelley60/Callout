@@ -32,7 +32,7 @@ public class PersonalDetails extends Activity {
         mAcademicBox = (CheckBox) findViewById(R.id.personalDetailsAcademicCheckId);
         mHobbyBox = (CheckBox) findViewById(R.id.personalDetailsHobbyId);
         mOtherBox = (CheckBox) findViewById(R.id.personalDetailsOtherCheckId);
-        mBackButton = (Button) findViewById(R.id.personDetailsBackButtonId);
+        //mBackButton = (Button) findViewById(R.id.personDetailsBackButtonId);
 
         /*
         mAcademicBox.setChecked(true);

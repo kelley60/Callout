@@ -27,7 +27,7 @@ public class ClubPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_club_view);
 
-        mBackButton = (Button) findViewById(R.id.studentClubViewBackButtonId);
+        //mBackButton = (Button) findViewById(R.id.studentClubViewBackButtonId);
         joinButton = (Button) findViewById(R.id.joinButton);
 
         //receives intent from ClubMasterList

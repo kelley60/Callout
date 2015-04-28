@@ -30,7 +30,7 @@ public class AddClub extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.club_add);
-        mBackButton = (Button) findViewById(R.id.clubAddBackButtonId);
+        //mBackButton = (Button) findViewById(R.id.clubAddBackButtonId);
         mMakeClubButton = (Button) findViewById(R.id.addClubButtonId);
 
         mSportsBox = (CheckBox) findViewById(R.id.addClubSportsButtonId);

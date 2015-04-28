@@ -30,7 +30,7 @@ public class ClubActivity extends Activity{
         mClubListButton = (Button) findViewById(R.id.clubHomeClubListButtonId);
         mCalendarButton = (Button) findViewById(R.id.clubHomeCalendarButtonId);
         mClubDetailsButton = (Button) findViewById(R.id.clubHomeClubDetailsButtonId);
-        mBackButton = (Button) findViewById(R.id.clubHomeBackButtonId);
+        //mBackButton = (Button) findViewById(R.id.clubHomeBackButtonId);
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

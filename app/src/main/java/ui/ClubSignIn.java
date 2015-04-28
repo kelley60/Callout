@@ -25,7 +25,7 @@ public class ClubSignIn extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.club_sign_in);
         mGoButton = (Button) findViewById(R.id.clubSignInButtonId);
-        mBackButton = (Button) findViewById(R.id.clubSignInBackButtonId);
+        //mBackButton = (Button) findViewById(R.id.clubSignInBackButtonId);
         mAddClubButton = (Button) findViewById(R.id.clubSignInAddClubButtonId);
         //should initially be false, changed to true if valid user
         isValidLogin = true;
