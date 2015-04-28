@@ -11,13 +11,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
 import calendar.Calendar;
 import calendar.CalendarActivity;
-import calendar.CalendarEvent;
 
 /**
  * Created by William on 4/8/2015

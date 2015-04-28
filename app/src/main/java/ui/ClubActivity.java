@@ -53,7 +53,7 @@ public class ClubActivity extends Activity{
             @Override
             public void onClick(View v) {
                 Intent userIntent;
-                userIntent = new Intent("Calendar");
+                userIntent = new Intent("calendar");
                 userIntent.putExtra("fromClub", true);
                 startActivity(userIntent);
             }
@@ -99,7 +99,7 @@ public class ClubActivity extends Activity{
                 break;
 
             case R.id.action_calendar:
-                userIntent = new Intent("Calendar");
+                userIntent = new Intent("calendar");
                 userIntent.putExtra("fromClub", true);
                 break;
 

@@ -69,7 +69,7 @@ public class StudentActivity extends Activity{
                 @Override
                 public void onClick(View v) {
                     Intent userIntent;
-                    userIntent = new Intent("Calendar");
+                    userIntent = new Intent("calendar");
                     startActivity(userIntent);
                 }
             });
@@ -119,7 +119,7 @@ public class StudentActivity extends Activity{
                 break;
 
             case R.id.action_calendar:
-                i = new Intent("Calendar");
+                i = new Intent("calendar");
                 break;
 
             case R.id.action_personal_details:

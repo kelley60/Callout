@@ -33,12 +33,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addClubNameEditTextId"
-        android:text="Enter Club Name"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/addClubButtonId"
         android:layout_alignEnd="@+id/addClubButtonId"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:hint="Enter Club Name" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -47,11 +47,11 @@
         android:ems="10"
         android:id="@+id/addClubEditTextBioId"
         android:layout_below="@+id/addClubNameEditTextId"
-        android:text="Enter Club Description"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:hint="Enter Club Description" />
 
     <CheckBox
         android:layout_width="wrap_content"

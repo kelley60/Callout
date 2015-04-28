@@ -7,6 +7,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import seanmkelley.callout.HTTPPost;
 import seanmkelley.callout.R;
 
 
@@ -30,6 +31,16 @@ public class AddCalendarEventActivity extends Activity {
                 // TODO add this event to the database
                 System.out.println("Adding event:\n" + "Title: " + title.getText().toString() + "\nDescription: " + description.getText().toString());
                 System.out.println("This event will occur on: " + datePicker.getDayOfMonth() + "\nAt: " + timePicker.getCurrentMinute());
+
+                String query = HTTPPost.generateCalendarQuery(
+                        title.getText().toString(),
+                        description.getText().toString(),
+                        datePicker.getYear(),
+                        datePicker.getMonth(),
+                        datePicker.getDayOfMonth(),
+                        timePicker.getCurrentMinute(),
+                        timePicker.getCurrentMinute());
+                HTTPPost.execute(query);
 
                 // Add it directly to local calendar, or update from database?
 

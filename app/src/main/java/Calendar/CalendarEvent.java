@@ -5,7 +5,7 @@ package calendar;
  * as well as its title and description
  *
  * @author Will Enright
- * @see calendar.Calendar
+ * @see Calendar.Calendar
  */
 public class CalendarEvent {
     private int year, month, day, hour, minute;

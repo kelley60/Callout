@@ -14,7 +14,6 @@ import java.io.IOException;
 
 
 public class AddClub extends Activity {
-
     public static final String TAG = AddClub.class.getSimpleName();
     private Button mBackButton;
     private Button mMakeClubButton;
@@ -30,13 +29,14 @@ public class AddClub extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.club_add);
         mBackButton = (Button) findViewById(R.id.clubAddBackButtonId);
+        mMakeClubButton = (Button) findViewById(R.id.addClubButtonId);
+
         mSportsBox = (CheckBox) findViewById(R.id.addClubSportsButtonId);
         mAcademicBox = (CheckBox) findViewById(R.id.clubAddAcademicButton);
         mHobbyBox = (CheckBox) findViewById(R.id.addClubHobbyButtonId);
         mOtherBox = (CheckBox) findViewById(R.id.addClubOtherButtonId);
-        mMakeClubButton = (Button) findViewById(R.id.addClubButtonId);
-        mClubNameText = (EditText) findViewById(R.id.addClubNameEditTextId);
-        mClubBioText = (EditText) findViewById(R.id.addClubEditTextBioId);
+        mClubNameText = (EditText) findViewById(R.id.addClubEditTextBioId);
+        mClubBioText = (EditText) findViewById(R.id.addClubNameEditTextId);
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +50,7 @@ public class AddClub extends Activity {
             public void onClick(View v){
                 try {
                     makeClub();
+                    finish();
                 }
                 catch (IOException e) {
                     Log.e(TAG, "Exception caught : ", e);
@@ -82,8 +83,6 @@ public class AddClub extends Activity {
     }
 
     public void makeClub() throws IOException {
-        HTTPPost example = new HTTPPost();
-
         String clubName = mClubNameText.getText().toString();
         String clubBio = mClubBioText.getText().toString();
         String isSport = "";
@@ -99,7 +98,7 @@ public class AddClub extends Activity {
         if (mOtherBox.isChecked())
             isOther = "Other";
 
-        String query = example.generateQuery("PSP Honors Frat", "Must have a 3.0 GPA to join", "Academic", "", "", "");
-        example.post(query);
+        String query = HTTPPost.generateClubQuery(clubName, clubBio, isSport, isAcademic, isHobby, isOther);
+        HTTPPost.execute(query);
     }
 }
