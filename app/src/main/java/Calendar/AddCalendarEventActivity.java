@@ -47,6 +47,8 @@ public class AddCalendarEventActivity extends Activity {
 
                 // Add it directly to local calendar, or update from database?
 
+
+
                 // Finish this intent and return to the previous one (calendar)
                 finish();
             }

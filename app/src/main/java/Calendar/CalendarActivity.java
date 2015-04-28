@@ -22,7 +22,7 @@ public class CalendarActivity extends Activity {
     private CalendarArrayAdapter calendarArrayAdapter;
 
     private Button mBackButton;
-
+    final Calendar calendar = new Calendar();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +39,6 @@ public class CalendarActivity extends Activity {
 
 
         //Create calendar and import all events from database
-        final Calendar calendar = new Calendar();
 
         // Request all events from db then parse and fill the calendar
         HTTPGet.getCalendarEvents(calendar, this);
@@ -117,5 +116,12 @@ public class CalendarActivity extends Activity {
                 calendarArrayAdapter.notifyDataSetChanged();
             }
         });
+    }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        HTTPGet.getCalendarEvents(calendar, this);
+
     }
 }
