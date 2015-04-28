@@ -22,6 +22,7 @@ public class AddClub extends Activity {
     private CheckBox mAcademicBox;
     private CheckBox mHobbyBox;
     private CheckBox mOtherBox;
+
     private EditText mClubNameText;
     private EditText mClubBioText;
 
