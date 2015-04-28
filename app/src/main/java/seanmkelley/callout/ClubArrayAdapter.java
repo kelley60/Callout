@@ -34,7 +34,7 @@ public class ClubArrayAdapter extends ArrayAdapter {
             view = convertView;
 
         // Setup text
-        TextView text = (TextView) view.findViewById(R.id.text);
+        TextView text = (TextView) view.findViewById(R.id.title);
 
         text.setText(clubNames.get(position).getName());
 

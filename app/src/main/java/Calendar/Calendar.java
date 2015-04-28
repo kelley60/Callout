@@ -56,7 +56,7 @@ public class Calendar {
      * This function searches for all events that occur on a given day
      *
      * @param year  The year that is to be searched for events
-     * @param month The month that is to be searched for events, starting with January at 0
+     * @param month The month that is to be searched for events
      * @param day   The day that is to be searched for events
      * @return      An ArrayList of all of the events on the given day
      */

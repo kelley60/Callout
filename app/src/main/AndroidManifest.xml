@@ -49,15 +49,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="calendar.ClubCalendarActivity"
-            android:label="@string/title_activity_club_calendar" >
-            <intent-filter>
-                <action android:name="ClubCalendar" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name="calendar.AddCalendarEventActivity"
             android:label="@string/title_activity_add_calendar_event" >
             <intent-filter>

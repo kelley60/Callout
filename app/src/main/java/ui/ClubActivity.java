@@ -53,7 +53,8 @@ public class ClubActivity extends Activity{
             @Override
             public void onClick(View v) {
                 Intent userIntent;
-                userIntent = new Intent("ClubCalendar");
+                userIntent = new Intent("Calendar");
+                userIntent.putExtra("fromClub", true);
                 startActivity(userIntent);
             }
         });
@@ -90,34 +91,35 @@ public class ClubActivity extends Activity{
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        Intent i = null;
+        Intent userIntent = null;
 
         switch (item.getItemId()) {
             case R.id.action_master_club_list:
-                i = new Intent("ClubMasterList");
+                userIntent = new Intent("ClubMasterList");
                 break;
 
             case R.id.action_calendar:
-                i = new Intent("Calendar");
+                userIntent = new Intent("Calendar");
+                userIntent.putExtra("fromClub", true);
                 break;
 
             case R.id.action_club_details:
-                i = new Intent(ClubActivity.this,ClubClubView.class);
+                userIntent = new Intent(ClubActivity.this,ClubClubView.class);
                 break;
 
             /*
             may add later?
             case R.id.action_club_members:
-                i = new Intent("Club_Members");
+                userIntent = new Intent("Club_Members");
                 break;
                 */
 
             default:
-                i = new Intent(ClubActivity.this,ClubSignIn.class);
+                userIntent = new Intent(ClubActivity.this,ClubSignIn.class);
                 break;
         }
 
-        startActivity(i);
+        startActivity(userIntent);
 
         return false;
     }

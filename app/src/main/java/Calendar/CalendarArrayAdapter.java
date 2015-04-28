@@ -39,7 +39,7 @@ public class CalendarArrayAdapter extends ArrayAdapter {
             view = convertView;
 
         // Setup text view
-        TextView text = (TextView) view.findViewById(R.id.text);
+        TextView text = (TextView) view.findViewById(R.id.title);
 
         // Assign the text to be the toString of the specified event
         text.setText(events.get(position).toString());

@@ -23,54 +23,56 @@ public class HTTPPost {
 
     OkHttpClient client = new OkHttpClient();
 
-    String post(String url, String json) throws IOException {
+    public void post (String url, String json) {
+        try {
+            post(url, json, new Callback() {
+                @Override
+                public void onFailure(Request request, IOException e) {
+
+                }
+
+                @Override public void onResponse(Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        // This response doesn't really hold much useful information,
+                        //  just whether or not it was successful
+                        String responseStr = response.body().string();
+                    } else {
+                        // Request not successful
+                    }
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Call post(String url, String json, Callback callback) throws IOException {
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)
                 .build();
         Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Request request, IOException e) {
-                e.printStackTrace();
-            }
-            @Override
-            public void onResponse(Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    if (response.isSuccessful()) {
-                           response.execute();
-                        }
-                     else {
-                        System.out.println("Response unsuccessful");
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-        Response response = client.newCall(request).execute();
-        return response.body().string();
+        call.enqueue(callback);
+        return call;
     }
 
-    String sendClub(String Name, String Bio, String cat1, String cat2, String cat3, String cat4) {
-        return  "{" +
-                "'Name':'" + Name +
+    public String sendClub(String Name, String Bio, String cat1, String cat2, String cat3, String cat4) {
+        /*return  "{" +
+                "Name':'" + Name +
                 "'Bio':" + Bio +
                 "'cat1:" + cat1 +
                 "'cat2:" + cat2 +
                 "'cat3:" + cat3 +
                 "'cat4:" + cat4 +
+                "}"; */
+        return  "{" +
+                "\"Name\": \"" + Name + "\"," +
+                "\"Bio\": \"" + Bio + "\"," +
+                "\"cat1\": \"" + cat1 + "\"," +
+                "\"cat2\": \"" + cat2 + "\"," +
+                "\"cat3\": \"" + cat3 + "\"," +
+                "\"cat4\": \"" + cat4 + "\"," +
                 "}";
-    }
-
-    public static void main(String[] args) throws IOException {
-        HTTPPost example = new HTTPPost();
-        String json = example.sendClub("PSP Honors Frat", "Must have a 3.0 GPA to join",
-            "Academic","","","");
-        String response = example.post("http://www.roundsapp.com/post", json);
-        System.out.println(response);
     }
 }

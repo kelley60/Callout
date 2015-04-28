@@ -12,9 +12,16 @@
         android:scaleType="fitCenter"
         />
     <TextView
-        android:id="@+id/text"
-        android:layout_width="fill_parent"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1" android:layout_gravity="left|center_vertical" android:textSize="20dip" android:layout_marginLeft="10dip"
-        />
+        android:layout_weight="1"
+        android:textSize="20dip" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/description" />
+
 </LinearLayout>

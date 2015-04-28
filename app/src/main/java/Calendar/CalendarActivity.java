@@ -34,18 +34,14 @@ public class CalendarActivity extends Activity {
 
         setContentView(R.layout.activity_calendar);
 
+        // Save the context so that we can set list view on item click later
+        final Context context = this;
+
         //Create calendar and import all events from database
         final Calendar calendar = new Calendar();
 
-        // TODO request all events from db then parse and fill the calendar
+        // Request all events from db, then parse and fill the calendar
         HTTPGet.getCalendarEvents(calendar, this);
-
-        // These will be hardcoded for testing purposes
-        // Month starts on 0, so April is actually 3.  day/year do not
-        //calendar.addEvent(2015, 3, 2, 13, 30, "Something Club", "Do stuff");
-
-        // Save the context so that we can set list view on item click later
-        final Context context = this;
 
         calendarArrayAdapter = new CalendarArrayAdapter(context, R.layout.list_item, null);
 
@@ -56,7 +52,7 @@ public class CalendarActivity extends Activity {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 // Find all of the events on a certain day
-                List<CalendarEvent> events = calendar.getEventsOnDay(year, month, day);
+                List<CalendarEvent> events = calendar.getEventsOnDay(year, month + 1, day);
 
                 // Setup the list view to display the club names
                 ListView lv = (ListView) findViewById(R.id.listViewCalendar);
@@ -79,8 +75,15 @@ public class CalendarActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_calendar, menu);
+        if (getIntent().hasExtra("fromClub")) {
+            // Inflate the empty menu; this adds items to the action bar if it is present.
+            getMenuInflater().inflate(R.menu.menu_calendar, menu);
+        }
+        else {
+            // Inflate the menu; this adds items to the action bar if it is present.
+            getMenuInflater().inflate(R.menu.menu_calendar_blank, menu);
+        }
+
         return true;
     }
 
@@ -93,6 +96,7 @@ public class CalendarActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent("AddCalendarEvent"));
             return true;
         }
 
