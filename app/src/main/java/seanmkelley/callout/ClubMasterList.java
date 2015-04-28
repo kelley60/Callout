@@ -28,7 +28,6 @@ public class ClubMasterList extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_master_list);
 
-
         mBackButton = (Button) findViewById(R.id.masterListBackButtonId);
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
