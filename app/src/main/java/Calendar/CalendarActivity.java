@@ -54,6 +54,15 @@ public class CalendarActivity extends Activity {
 
         // TODO Fill events list once for the current day, as it does not call the method below
 
+        // Use the list_item layout to display the events
+        java.util.Calendar alice = java.util.Calendar.getInstance();
+        List<CalendarEvent> events = calendar.getEventsOnDay(alice.get(alice.YEAR), alice.get(alice.MONTH), alice.get(alice.DAY_OF_MONTH));
+    System.out.println(""+alice.get(alice.MONTH));
+        ListView lv = (ListView) findViewById(R.id.listViewCalendar);
+        calendarArrayAdapter = new CalendarArrayAdapter(context, R.layout.list_item, events);
+        lv.setAdapter(calendarArrayAdapter);
+
+
         CalendarView cv = (CalendarView) findViewById(R.id.calendarView);
         cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
