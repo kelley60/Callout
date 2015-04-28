@@ -14,7 +14,7 @@ import seanmkelley.callout.R;
 public class AddCalendarEventActivity extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_calendar_event);
 
@@ -32,14 +32,17 @@ public class AddCalendarEventActivity extends Activity {
                 System.out.println("Adding event:\n" + "Title: " + title.getText().toString() + "\nDescription: " + description.getText().toString());
                 System.out.println("This event will occur on: " + datePicker.getDayOfMonth() + "\nAt: " + timePicker.getCurrentMinute());
 
+                // TODO find club name and use that instead of hardcoded value
                 String query = HTTPPost.generateCalendarQuery(
                         title.getText().toString(),
-                        description.getText().toString(),
-                        datePicker.getYear(),
                         datePicker.getMonth(),
                         datePicker.getDayOfMonth(),
+                        datePicker.getYear(),
+                        timePicker.getCurrentHour(),
                         timePicker.getCurrentMinute(),
-                        timePicker.getCurrentMinute());
+                        description.getText().toString(),
+                        "Football Fans"
+                        );
                 HTTPPost.execute(query);
 
                 // Add it directly to local calendar, or update from database?

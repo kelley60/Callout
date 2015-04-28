@@ -9,7 +9,7 @@
         android:id="@+id/imageButton"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/football"
+        android:src="@drawable/ic_launcher"
         android:scaleType="fitCenter"/>
 
     <EditText

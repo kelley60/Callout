@@ -115,7 +115,7 @@ public class HTTPGet {
                             JSONObject obj = jsonArray.getJSONObject(i);
                             calendar.addEvent(
                                     obj.optInt("year"),
-                                    obj.optInt("month") - 1,
+                                    obj.optInt("month"),
                                     obj.optInt("day"),
                                     obj.optInt("hour"),
                                     obj.optInt("minute"),
