@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
 import java.io.IOException;
 
@@ -16,13 +18,25 @@ public class AddClub extends Activity {
     public static final String TAG = AddClub.class.getSimpleName();
     private Button mBackButton;
     private Button mMakeClubButton;
+    private CheckBox mSportsBox;
+    private CheckBox mAcademicBox;
+    private CheckBox mHobbyBox;
+    private CheckBox mOtherBox;
+    private EditText mClubNameText;
+    private EditText mClubBioText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.club_add);
         mBackButton = (Button) findViewById(R.id.clubAddBackButtonId);
+        mSportsBox = (CheckBox) findViewById(R.id.addClubSportsButtonId);
+        mAcademicBox = (CheckBox) findViewById(R.id.clubAddAcademicButton);
+        mHobbyBox = (CheckBox) findViewById(R.id.addClubHobbyButtonId);
+        mOtherBox = (CheckBox) findViewById(R.id.addClubOtherButtonId);
         mMakeClubButton = (Button) findViewById(R.id.addClubButtonId);
+        mClubNameText = (EditText) findViewById(R.id.addClubNameEditTextId);
+        mClubBioText = (EditText) findViewById(R.id.addClubEditTextBioId);
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,8 +83,24 @@ public class AddClub extends Activity {
 
     public void makeClub() throws IOException {
         HTTPPost example = new HTTPPost();
-        String json = example.sendClub("PSP Honors Frat", "Must have a 3.0 GPA to join",
-                "Academic","","","");
+        String clubName = mClubNameText.getText().toString();
+        String clubBio = mClubBioText.getText().toString();
+        String isSport = "";
+        if (mSportsBox.isChecked())
+            isSport = "Sports";
+        String isAcademic = "";
+        if (mAcademicBox.isChecked())
+            isAcademic = "Academic";
+        String isHobby = "";
+        if (mHobbyBox.isChecked())
+            isHobby = "Hobby";
+        String isOther = "";
+        if (mOtherBox.isChecked())
+            isOther = "Other";
+
+        Log.v(TAG, "" + clubName + " " + clubBio);
+
+        String json = example.sendClub(clubName, clubBio,isSport,isAcademic,isHobby,isOther);
         example.post("http://www.roundsapp.com/post", json);
     }
 }
