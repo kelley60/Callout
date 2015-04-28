@@ -71,6 +71,6 @@ public class AddClub extends Activity {
         HTTPPost example = new HTTPPost();
         String json = example.sendClub("PSP Honors Frat", "Must have a 3.0 GPA to join",
                 "Academic","","","");
-        example.post("http://www.roundsapp.com/post", json);
+        example.post("http://web.ics.purdue.edu/~awirth/db_clubs_send.php", json);
     }
 }
