@@ -84,6 +84,7 @@ public class AddClub extends Activity {
 
     public void makeClub() throws IOException {
         HTTPPost example = new HTTPPost();
+
         String clubName = mClubNameText.getText().toString();
         String clubBio = mClubBioText.getText().toString();
         String isSport = "";
@@ -103,6 +104,7 @@ public class AddClub extends Activity {
 
 
         String json = example.sendClub(clubName, clubBio,isSport,isAcademic,isHobby,isOther);
-        example.post("http://www.roundsapp.com/post", json);
+        example.post("http://web.ics.purdue.edu/~awirth/db_clubs_send.php", json);
+
     }
 }
