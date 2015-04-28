@@ -115,14 +115,12 @@ public class HTTPGet {
                             JSONObject obj = jsonArray.getJSONObject(i);
                             calendar.addEvent(
                                     obj.optInt("year"),
-                                    obj.optInt("month"),
+                                    obj.optInt("month") - 1,
                                     obj.optInt("day"),
                                     obj.optInt("hour"),
                                     obj.optInt("minute"),
                                     obj.optString("title"),
                                     obj.optString("description"));
-
-                            System.out.println("Adding event with description: " + obj.optString("Description"));
                         }
                     }
                 }

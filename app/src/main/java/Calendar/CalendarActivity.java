@@ -2,6 +2,7 @@ package calendar;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -96,6 +97,9 @@ public class CalendarActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent i = new Intent("AddCalendarEvent");
+            i.putExtra("fromClub", true);
+            startActivity(i);
             return true;
         }
 
