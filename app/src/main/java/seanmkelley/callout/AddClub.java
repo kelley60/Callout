@@ -64,6 +64,7 @@ public class AddClub extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_club, menu);
         return true;
+
     }
 
     @Override
