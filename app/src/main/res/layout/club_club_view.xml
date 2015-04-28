@@ -8,13 +8,15 @@
         android:layout_height="300px"
         android:id="@+id/imageButton"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/football"
+        android:scaleType="fitCenter"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Club Name"
+        android:text="Football Fans"
         android:id="@+id/clubName"
         android:layout_below="@+id/imageButton"
         android:layout_alignLeft="@+id/imageButton"
@@ -24,11 +26,13 @@
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Club Bio"
+        android:text="We are fans who are passionate about football at both the college and professional level"
         android:id="@+id/clubBio"
         android:layout_below="@+id/clubName"
         android:layout_centerHorizontal="true" />
 
+
+    <!--
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,5 +41,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
-
+    -->
 </RelativeLayout>

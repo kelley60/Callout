@@ -1,6 +1,7 @@
 package seanmkelley.callout;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -28,7 +30,7 @@ public class AddClub extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.club_add);
-        mBackButton = (Button) findViewById(R.id.clubAddBackButtonId);
+        //mBackButton = (Button) findViewById(R.id.clubAddBackButtonId);
         mMakeClubButton = (Button) findViewById(R.id.addClubButtonId);
 
         mSportsBox = (CheckBox) findViewById(R.id.addClubSportsButtonId);
@@ -50,6 +52,8 @@ public class AddClub extends Activity {
             public void onClick(View v){
                 try {
                     makeClub();
+                    Context context = getApplicationContext();
+                    Toast.makeText(context, "Club " + mClubNameText.getText().toString() + " created!", Toast.LENGTH_LONG).show();
                     finish();
                 }
                 catch (IOException e) {

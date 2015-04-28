@@ -17,7 +17,7 @@ public class ClubClubView extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.club_club_view);
 
-        mBackButton = (Button) findViewById(R.id.clubClubViewBackButtonId);
+        //mBackButton = (Button) findViewById(R.id.clubClubViewBackButtonId);
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override

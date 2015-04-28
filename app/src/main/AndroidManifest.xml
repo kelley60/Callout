@@ -118,7 +118,7 @@
         <activity
             android:name=".AddClub"
             android:label="@string/title_activity_add_club"
-            android:parentActivityName="ui.ClubActivity" >
+            android:parentActivityName="ui.ClubSignIn" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ui.ClubActivity" />
