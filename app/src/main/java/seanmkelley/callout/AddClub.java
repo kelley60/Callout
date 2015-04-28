@@ -35,8 +35,8 @@ public class AddClub extends Activity {
         mAcademicBox = (CheckBox) findViewById(R.id.clubAddAcademicButton);
         mHobbyBox = (CheckBox) findViewById(R.id.addClubHobbyButtonId);
         mOtherBox = (CheckBox) findViewById(R.id.addClubOtherButtonId);
-        mClubNameText = (EditText) findViewById(R.id.addClubEditTextBioId);
-        mClubBioText = (EditText) findViewById(R.id.addClubNameEditTextId);
+        mClubNameText = (EditText) findViewById(R.id.addClubNameEditTextId);
+        mClubBioText = (EditText) findViewById(R.id.addClubEditTextBioId);
 
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
