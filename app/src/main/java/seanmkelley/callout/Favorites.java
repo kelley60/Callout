@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import ui.MyActivity;
+import ui.StudentActivity;
+
 
 public class Favorites extends ClubMasterList{
 
@@ -115,12 +118,15 @@ public class Favorites extends ClubMasterList{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        Intent i = null;
 
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            default:
+                i = new Intent(Favorites.this, StudentActivity.class);
+                break;
+        }
+        startActivity(i);
+        return false;
     }
 
     private String getClubName(int position) {

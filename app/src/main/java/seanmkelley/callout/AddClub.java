@@ -40,13 +40,14 @@ public class AddClub extends Activity {
         mClubNameText = (EditText) findViewById(R.id.addClubNameEditTextId);
         mClubBioText = (EditText) findViewById(R.id.addClubEditTextBioId);
 
+        /*
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
+        */
         mMakeClubButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
