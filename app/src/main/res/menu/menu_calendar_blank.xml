@@ -1,3 +1,25 @@
-<menu
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" tools:context="Calendar.CalendarActivity">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/cal_filter_sports"
+            android:title="@string/filter_sports"
+            android:orderInCategory="1"
+            android:showAsAction="never" />
+        <item android:id="@+id/cal_filter_hobby"
+            android:title="@string/filter_hobby"
+            android:orderInCategory="2"
+            android:showAsAction="never" />
+        <item android:id="@+id/cal_filter_academic"
+            android:title="@string/filter_academic"
+            android:orderInCategory="3"
+            android:showAsAction="never" />
+        <item android:id="@+id/cal_filter_other"
+            android:title="@string/filter_other"
+            android:orderInCategory="4"
+            android:showAsAction="never" />
+        <item android:id="@+id/cal_filter_all"
+            android:title="@string/all"
+            android:orderInCategory="4"
+            android:showAsAction="never" />
+    </group>
 </menu>

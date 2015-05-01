@@ -3,6 +3,7 @@ package calendar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ public class CalendarActivity extends Activity {
 
     private Button mBackButton;
     final Calendar calendar = new Calendar();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +100,20 @@ public class CalendarActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         if (getIntent().hasExtra("fromClub"))
             getMenuInflater().inflate(R.menu.menu_calendar, menu);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (containsPreference("sports")) {
+            onOptionsItemSelected(menu.getItem(0));
+        } else if (containsPreference("hobby")) {
+            onOptionsItemSelected(menu.getItem(1));
+        } else if (containsPreference("academic")) {
+            onOptionsItemSelected(menu.getItem(2));
+        } else if (containsPreference("other")) {
+            onOptionsItemSelected(menu.getItem(3));
+        }
         return true;
     }
 
@@ -114,13 +130,49 @@ public class CalendarActivity extends Activity {
             return true;
         }
 
+        //resetClubList();
+
+        String category = null;
+
+        switch (id){
+            case R.id.cal_filter_sports:
+                category = "Sports";
+                break;
+
+            case R.id.cal_filter_hobby:
+                category = "Hobby";
+                break;
+
+            case R.id.cal_filter_academic:
+                category = "Academic";
+                break;
+
+            case R.id.cal_filter_other:
+                category = "Other";
+                break;
+
+            default:
+                break;
+        }
+
+        if(!item.isChecked())
+/*            for (int i = eventList.size() - 1; i >= 0; i--)
+                if (!clubList.get(i).cat.contains(category))
+                    clubList.remove(i);
+*/
+        item.setChecked(!item.isChecked());
+
+        updateEventList();
+
         return super.onOptionsItemSelected(item);
+
+
     }
 
     /**
      * This updates the array adapter, letting it know that the data it displays has changed
      * It will be called from {@link HTTPGet} once it has finished downloading all of the
-     *  events from the cal table
+     * events from the cal table
      */
     public void updateEventList() {
         runOnUiThread(new Runnable() {
@@ -130,13 +182,26 @@ public class CalendarActivity extends Activity {
             }
         });
     }
+
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
 
         super.onResume();
         calendar.clear();
         HTTPGet.getCalendarEvents(calendar, this);
 
+    }
+
+
+    public boolean containsPreference(String p) {
+        Context context =CalendarActivity.this;
+        SharedPreferences sp = context.getSharedPreferences(getString(R.string.callout_file_key), Context.MODE_PRIVATE);
+        String favoritesList = sp.getString(getString(R.string.user_preferences), "");
+
+        if (favoritesList.contains(p)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

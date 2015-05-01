@@ -1,6 +1,11 @@
 package calendar;
 
+import android.view.Menu;
+import android.view.MenuItem;
+
 import java.util.ArrayList;
+
+import seanmkelley.callout.R;
 
 /**
  * This object represents a calendar which is different than that of {@link java.util.Calendar}
@@ -37,6 +42,7 @@ public class Calendar {
     public void addEvent(int year, int month, int day, int hour, int minute, String title, String description,String club) {
         events.add(new CalendarEvent(year, month, day, hour, minute, title, description,club));
     }
+
 
     /**
      * @return All of the current events on the calendar
